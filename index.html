@@ -329,7 +329,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <div class="wrap">
       <div><div class="motto"><span>BELIEVE</span><span>TRAIN</span><span>SUCCEED</span></div><div class="hcta"><a href="#roster" class="btn">Meet the roster</a><a href="#apply" class="btn ghost">Join the academy</a></div></div>
       <div class="facts">
-        <div><span class="cnt" data-to="15">0</span><small>Players</small></div>
+        <div><span class="cnt" id="pcount" data-to="30">0</span><small>Players</small></div>
         <div>26/27<small>Season</small></div>
       </div>
     </div>
@@ -525,6 +525,7 @@ fb.forEach(b=>b.onclick=()=>{fb.forEach(x=>x.classList.remove('on'));b.classList
 tb.forEach(b=>b.onclick=()=>{if(b.dataset.t===team)return;tb.forEach(x=>x.classList.remove('on'));b.classList.add('on');team=b.dataset.t;posF='all';
   fb.forEach(x=>x.classList.toggle('on',x.dataset.f==='all'));document.getElementById('tnote').textContent=NOTE[team];counts();applyF(true)});
 counts();applyF(false);
+document.getElementById('pcount').dataset.to=PLAYERS.length;
 const tk=PLAYERS.filter(p=>p.t==='a').map(p=>`<span><b>#${p.n}</b>${p.first} ${p.last}</span>`).join('');
 document.getElementById('ticker').innerHTML=tk+tk;
 const heroIds=[['o','rublenko'],['s','babych'],['c','r-manuilyk'],['s','mykhailovych'],['o','vakulenko']];
