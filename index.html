@@ -66,12 +66,12 @@ nav ul a:hover{color:var(--ink)} nav ul a:hover::after{transform:scaleX(1);trans
 .hero-squad .ph{width:clamp(130px,17vw,270px);margin:0 -2.4vw;position:relative;
   -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 98%),radial-gradient(70% 90% at 50% 40%,#000 50%,transparent 80%);
   -webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,#000 55%,transparent 98%);
-  filter:grayscale(.15) contrast(1.05)}
+  }
 .hero-squad .ph img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 12%;
   -webkit-mask-image:radial-gradient(46% 62% at 50% 52%,#000 60%,transparent 100%);mask-image:radial-gradient(46% 62% at 50% 52%,#000 60%,transparent 100%)}
 .hero-squad .ph.c{width:clamp(170px,22vw,340px);z-index:3}
-.hero-squad .ph.s{z-index:2;opacity:.9}
-.hero-squad .ph.o{z-index:1;opacity:.55;filter:grayscale(.6)}
+.hero-squad .ph.s{z-index:2}
+.hero-squad .ph.o{z-index:1}
 .hero-bottom{position:relative;z-index:4;padding:0 0 36px}
 .hero-bottom .wrap{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
 .motto{font-family:var(--cond);font-weight:700;font-size:clamp(18px,2vw,26px);letter-spacing:.42em;display:flex;gap:1.2em}
@@ -527,7 +527,7 @@ tb.forEach(b=>b.onclick=()=>{if(b.dataset.t===team)return;tb.forEach(x=>x.classL
 counts();applyF(false);
 const tk=PLAYERS.filter(p=>p.t==='a').map(p=>`<span><b>#${p.n}</b>${p.first} ${p.last}</span>`).join('');
 document.getElementById('ticker').innerHTML=tk+tk;
-const heroIds=[['o','rublenko'],['s','babych'],['c','suprun'],['s','r-manuilyk'],['o','bakhtieiev']];
+const heroIds=[['o','rublenko'],['s','babych'],['c','r-manuilyk'],['s','mykhailovych'],['o','vakulenko']];
 document.getElementById('squad').innerHTML=heroIds.map(([c,id])=>`<div class="ph ${c}"><img src="${src(id)}" alt=""></div>`).join('');
 
 // ---- card tilt + cursor
