@@ -345,7 +345,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <div>
         <p class="eyebrow">Season 2026/27 · <b>Squad</b></p>
         <h2 class="split"><span class="ln"><span>THE</span></span><span class="ln"><span><em>ROSTER</em></span></span></h2>
-        <p class="tnote" id="tnote">Senior squad · Season 2026/27</p>
+        <p class="tnote" id="tnote">Senior squad · Ukrainian Higher League · EYBL · International tournaments</p>
       </div>
       <div class="tside"><div class="seg teams" id="teams"><button class="on" data-t="a">First team<sup></sup></button><button data-t="j">Juniors<sup></sup></button></div>
       <div class="filters" id="filters">
@@ -512,7 +512,7 @@ grid.innerHTML=PLAYERS.map(p=>`
  </article>`).join('');
 const fb=document.querySelectorAll('#filters button'),tb=document.querySelectorAll('#teams button');
 let team='a',posF='all';
-const NOTE={a:'Senior squad · Season 2026/27',j:'Junior squad · EUBL & international tournaments'};
+const NOTE={a:'Senior squad · Ukrainian Higher League · EYBL · International tournaments',j:'Junior squad · EYBL · International tournaments'};
 function counts(){fb.forEach(b=>{const f=b.dataset.f,L=PLAYERS.filter(p=>p.t===team&&(f==='all'||p.g.includes(f))).length;
   let sp=b.querySelector('sup');if(!sp){sp=document.createElement('sup');b.appendChild(sp)}sp.textContent=L;b.style.display=L?'':'none'});
   tb.forEach(b=>b.querySelector('sup').textContent=PLAYERS.filter(p=>p.t===b.dataset.t).length)}
