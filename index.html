@@ -241,6 +241,21 @@ section{position:relative}
 .log td{padding:8px 4px;border-bottom:1px solid var(--line)}.log td.w{color:#7fd17f}.log td.l{color:#e58a98}
 .ppg{color:var(--ink);font-weight:600}
 
+/* national team */
+.ntpill{display:inline-flex;align-items:center;gap:7px;margin-bottom:8px;padding:5px 10px 5px 6px;border-radius:30px;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#ffe066;
+  background:linear-gradient(90deg,rgba(0,87,183,.35),rgba(255,215,0,.18));border:1px solid rgba(255,215,0,.35);box-shadow:0 0 14px rgba(0,87,183,.35)}
+.ntpill i{width:16px;height:11px;border-radius:2px;background:linear-gradient(180deg,#0057b7 50%,#ffd700 50%);flex:none}
+.ntplate{display:flex;gap:18px;align-items:flex-start;margin-top:30px;padding:20px 22px;border-radius:16px;border:1px solid rgba(255,215,0,.3);
+  background:linear-gradient(120deg,rgba(0,87,183,.22),rgba(255,215,0,.07) 60%,rgba(20,12,15,.4));position:relative;overflow:hidden}
+.ntplate::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);transform:translateX(-100%);animation:sweep 4s infinite}
+.ntflag{flex:none;width:52px;height:36px;border-radius:6px;position:relative;overflow:hidden;background:linear-gradient(180deg,#0057b7 50%,#ffd700 50%);box-shadow:0 0 22px rgba(0,87,183,.6),0 0 30px rgba(255,215,0,.3)}
+.ntflag span{position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%);transform:translateX(-120%);animation:flagshine 3.5s ease-in-out infinite}
+.ntplate b{display:block;font-family:var(--cond);font-weight:800;font-size:26px;text-transform:uppercase;letter-spacing:.03em;line-height:1}
+.ntplate small{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#ffe066;margin-top:6px}
+.ntplate ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:#d8d2d4}
+.ntplate li em{font-style:normal;font-weight:700;color:#fff;display:inline-block;min-width:44px;padding:2px 8px;margin-right:10px;border-radius:6px;background:rgba(0,87,183,.55);text-align:center;font-size:12px}
+@media(max-width:760px){.ntpill{font-size:7.5px;letter-spacing:.08em;padding:4px 7px 4px 5px;margin-bottom:6px}.ntpill i{width:13px;height:9px}.ntplate{padding:16px;gap:14px}.ntflag{width:42px;height:29px}.ntplate b{font-size:21px}}
+
 /* juniors eybl */
 .jhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin:70px 0 18px;padding-top:40px;border-top:1px solid var(--line)}
 .jhead h3{font-family:var(--cond);font-weight:800;font-size:clamp(30px,4vw,54px);text-transform:uppercase;line-height:.95;margin-top:10px}
@@ -254,7 +269,7 @@ section{position:relative}
 .fhglow{position:absolute;width:620px;height:620px;right:-180px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(61,139,61,.45),transparent 65%);filter:blur(10px);animation:fhg 8s ease-in-out infinite alternate;pointer-events:none}
 @keyframes fhg{to{transform:translate(-80px,60px) scale(1.1)}}
 .fhl,.fhr{position:relative}
-.fhmark{display:flex;align-items:center;gap:18px;margin:22px 0 26px}
+.fhmark{margin:24px 0 28px}.fhmark img{width:min(420px,100%);height:auto;display:block;filter:drop-shadow(0 10px 30px rgba(76,175,80,.35))}
 .fhf{width:78px;height:78px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#4caf50,#2e7d32);font-family:var(--cond);font-weight:900;font-size:54px;color:#fff;box-shadow:0 14px 40px -10px rgba(76,175,80,.7)}
 .fhmark b{display:block;font-family:var(--cond);font-weight:800;font-size:clamp(44px,5.4vw,78px);line-height:.85;letter-spacing:.02em}
 .fhmark small{display:block;font-size:12px;letter-spacing:.5em;color:#8fd18f;margin-top:8px}
@@ -515,9 +530,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <li><a href="#staff">Staff</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#partner">Partner</a></li>
-      <li><a href="#apply">Contact</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#apply" class="uaflag" aria-label="Ukraine"><span></span></a>
+    <a href="#contact" class="uaflag" aria-label="Ukraine"><span></span></a>
     <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
   </div>
 </nav>
@@ -528,7 +543,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <li><a href="#staff"><small>03</small>Staff</a></li>
     <li><a href="#team"><small>04</small>Team</a></li>
     <li><a href="#partner"><small>05</small>Partner</a></li>
-    <li><a href="#apply"><small>06</small>Contact</a></li>
+    <li><a href="#contact"><small>06</small>Contact</a></li>
   </ul>
   <div class="mfoot"><span>Believe · Train · Succeed</span><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram ↗</a></div>
 </div>
@@ -542,7 +557,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   <div class="hero-squad" id="squad"></div>
   <div class="hero-bottom">
     <div class="wrap">
-      <div><div class="motto"><span>BELIEVE</span><span>TRAIN</span><span>SUCCEED</span></div><div class="hcta"><a href="#roster" class="btn">Meet the roster</a><a href="#apply" class="btn ghost">Join the academy</a></div></div>
+      <div><div class="motto"><span>BELIEVE</span><span>TRAIN</span><span>SUCCEED</span></div><div class="hcta"><a href="#roster" class="btn">Meet the roster</a><a href="#contact" class="btn ghost">Join the academy</a></div></div>
       <div class="facts">
         <div><span class="cnt" id="pcount" data-to="30">0</span><small>Players</small></div>
         <div>26/27<small>Season</small></div>
@@ -637,7 +652,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <div class="fhglow"></div>
       <div class="fhl">
         <p class="eyebrow">Official partner</p>
-        <div class="fhmark"><span class="fhf">F</span><div><b>FREEDOM</b><small>HOLDING CORP.</small></div></div>
+        <div class="fhmark"><img src="img/fhc-logo.svg" alt="Freedom Holding Corp."></div>
         <p class="fhtxt">Freedom Holding Corp. is the official partner and sponsor of Freedom UA Basketball Academy — supporting young Ukrainian players on their way to international basketball.</p>
         <a class="btn" href="https://freedomholdingcorp.com" target="_blank" rel="noopener">Visit freedomholdingcorp.com <em>→</em></a>
       </div>
@@ -666,30 +681,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   </div>
 </section>
 
-<section id="apply" class="apply">
-  <div class="wrap">
-    <div class="shead"><div><p class="eyebrow">Tryouts · Scouting · Partnerships</p>
-      <h2 class="split"><span class="ln"><span>GET IN</span></span><span class="ln"><span><em>TOUCH</em></span></span></h2></div></div>
-    <form id="form" class="form" novalidate>
-      <div class="seg" id="seg">
-        <button type="button" class="on" data-v="Tryout">I'm a player</button>
-        <button type="button" data-v="Scout">I'm a scout / coach</button>
-        <button type="button" data-v="Partner">Partnership</button>
-      </div>
-      <div class="fields">
-        <label><span>Full name</span><input name="name" required placeholder="Your name"></label>
-        <label><span>Phone / Telegram</span><input name="contact" required placeholder="+380 … or @username"></label>
-        <label class="opt" data-for="Tryout"><span>Birth year &amp; position</span><input name="extra" placeholder="e.g. 2010 · Guard"></label>
-        <label class="wide"><span>Message</span><textarea name="msg" rows="3" placeholder="Tell us a bit about yourself"></textarea></label>
-      </div>
-      <button class="btn big" type="submit">Send request <em>→</em></button>
-      <p class="fmail">Requests go to the General Manager · <a href="mailto:Vlad.volzhyn@gmail.com">Vlad.volzhyn@gmail.com</a></p>
-      <div class="ok" id="ok"><b>Almost done.</b> Your email app opened with the request — just press send. Or write directly to <a href="mailto:Vlad.volzhyn@gmail.com">Vlad.volzhyn@gmail.com</a>.</div>
-    </form>
-  </div>
-</section>
 
-<footer><div class="wrap"><span>© 2026 Freedom UA Basketball Academy</span><span class="flinks"><a href="#roster">Roster</a><a href="#staff">Staff</a><a href="#apply">Contact</a><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram</a></span><a href="#top">Back to top ↑</a></div></footer>
+
+<footer><div class="wrap"><span>© 2026 Freedom UA Basketball Academy</span><span class="flinks"><a href="#roster">Roster</a><a href="#staff">Staff</a><a href="#contact">Contact</a><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram</a></span><a href="#top">Back to top ↑</a></div></footer>
 
 <!-- player profile -->
 <div id="profile" aria-modal="true" role="dialog">
@@ -700,6 +694,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <p class="eyebrow" id="p-pos"></p>
       <h1 id="p-name"></h1>
       <div class="pf-stats" id="p-stats"></div>
+      <div class="ntplate" id="p-nt"></div>
       <div class="pstats" id="p-season"></div>
       <div class="hlplate" id="p-hl">
         <div class="play"></div>
@@ -754,6 +749,7 @@ const PLAYERS=[
  {id:'j-derkach',t:'j',n:54,first:'Oleksandr',last:'Derkach',pos:'Guard',g:'G',born:2011,h:"6'1",w:143,highlights:''},
 ];
 PLAYERS.forEach(p=>p.t=p.t||'a');
+const NT={"r-manuilyk": [["U16", "2024", "EYBL & EuroBasket camp"]], "mykhailovych": [["U16", "2024", "EYBL & EuroBasket camp"]], "babych": [["U18", "2026", "FIBA U18 EuroBasket, Div. B"], ["U16", "2024", "FIBA U16 EuroBasket, Div. B"]], "svyrydov": [["U16", "2025", "FIBA U16 EuroBasket, Div. B"]], "hanytskyi": [["U16", "2025", "FIBA U16 EuroBasket, Div. B"]], "suprun": [["U16", "2026", "FIBA U16 EuroBasket, Div. B"]]};
 const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "horb", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-sokolov", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "vakulenko"]);
 const src=id=>CUT.has(id)?`img/${id}.png`:`img/${id}.jpg`;
 const GD=window.FUA_GAMES||{games:[],upcoming:[],standings:[]};
@@ -771,7 +767,7 @@ grid.innerHTML=PLAYERS.map(p=>`
    ${p.tag?`<span class="tag">${p.tag}</span>`:''}
    <div class="photo${CUT.has(p.id)?' cut':''}"><img src="${src(p.id)}" alt="${p.first} ${p.last}" loading="lazy"></div>
    <div class="info">
-     <div class="pos">#${p.n} · ${p.pos}</div>
+     ${NT[p.id]?`<div class="ntpill"><i></i>Ukraine NT · ${NT[p.id].map(x=>x[0]).join(' / ')}</div>`:''}<div class="pos">#${p.n} · ${p.pos}</div>
      <h3 class="${p.last.length>11?'long':''}"><span>${p.first}</span>${p.last}</h3>
      <div class="meta"><span>${p.h}" · ${cm(p.h)} cm · ${p.born}</span><span class="hl"><i></i>Highlights</span></div>
    </div>
@@ -833,6 +829,9 @@ function openP(i){
     <div><small>Born</small><b>${p.born}</b></div>
     <div><small>Height</small><b>${p.h}"<i>${cm(p.h)} cm</i></b></div>
     <div><small>Weight</small><b>${p.w}<i>lbs · ${kg(p.w)} kg</i></b></div>`;
+  const nt=document.getElementById('p-nt'),N=NT[p.id];
+  nt.style.display=N?'':'none';
+  if(N)nt.innerHTML=`<div class="ntflag"><span></span></div><div><b>Ukraine national team</b><small>Youth national team player</small><ul>${N.map(x=>`<li><em>${x[0]}</em>${x[1]} · ${x[2]}</li>`).join('')}</ul></div>`;
   const ps=document.getElementById('p-season');
   const block=(S,lab)=>`<div class="pslab">${lab} · ${S.n} games</div>
     <div class="psg">${[['PTS',S.ppg],['REB',S.rpg],['AST',S.apg],['STL',S.spg],['EFF',S.eff]].map(([k,v])=>`<div><b>${v}</b><small>${k}</small></div>`).join('')}</div>
@@ -861,17 +860,6 @@ document.getElementById('pclose').onclick=()=>{history.pushState('',document.tit
 document.getElementById('p-prev').onclick=()=>location.hash=nb(-1).id;
 document.getElementById('p-next').onclick=()=>location.hash=nb(1).id;
 addEventListener('keydown',e=>{if(idx<0)return;if(e.key==='Escape')document.getElementById('pclose').click();if(e.key==='ArrowRight')document.getElementById('p-next').click();if(e.key==='ArrowLeft')document.getElementById('p-prev').click()});
-
-// ---- form (demo: no backend yet)
-const seg=document.querySelectorAll('#seg button');let kind='Tryout';
-seg.forEach(b=>b.onclick=()=>{seg.forEach(x=>x.classList.remove('on'));b.classList.add('on');kind=b.dataset.v;document.querySelector('.opt').style.display=kind==='Tryout'?'':'none'});
-document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();const f=e.target;let bad=false;
-  f.querySelectorAll('[required]').forEach(i=>{const x=!i.value.trim();i.parentNode.classList.toggle('err',x);bad=bad||x});
-  if(bad)return;
-  const v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
-  const body=`Request type: ${kind}\nName: ${v('name')}\nContact: ${v('contact')}`+(kind==='Tryout'?`\nBirth year & position: ${v('extra')}`:'')+`\n\n${v('msg')}`;
-  const a=document.createElement('a');a.href='mailto:Vlad.volzhyn@gmail.com?subject='+encodeURIComponent('Freedom UA — '+kind+' request: '+v('name'))+'&body='+encodeURIComponent(body);a.click();
-  const ok=document.getElementById('ok');ok.classList.add('on');gsap.fromTo(ok,{opacity:0,y:10},{opacity:1,y:0,duration:.6});f.reset()});
 
 // ---- games
 const fmtD=d=>new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short'}).toUpperCase();
