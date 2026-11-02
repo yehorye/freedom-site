@@ -185,11 +185,23 @@ section{position:relative}
 .pf-spons{margin-top:28px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute)}
 .pf-spons b{color:var(--green);font-weight:600}
 
+/* cutout photos */
+.card .photo.cut img{object-position:50% 0;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 98%);mask-image:linear-gradient(180deg,#000 62%,transparent 98%)}
+.card .photo.cut{inset:6% -8% 0 -8%}
+.hero-squad .ph{-webkit-mask-image:none;mask-image:none}
+.hero-squad .ph img{aspect-ratio:9/10;object-position:50% 0;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 97%);mask-image:linear-gradient(180deg,#000 60%,transparent 97%)}
+.pf-photo img.cut{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 99%);mask-image:linear-gradient(180deg,#000 70%,transparent 99%);aspect-ratio:9/10;object-position:50% 0}
+.teamshot{padding:40px 0 20px}
+.tframe{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.tframe img{width:100%;filter:grayscale(1) contrast(1.05);transition:filter 1s}
+.tframe:hover img{filter:none}
+
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 @media(max-width:760px){.staff{grid-template-columns:1fr}}
 .sc{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/4.4;border:1px solid var(--line);background:#130b0e}
+.sc{background:radial-gradient(70% 60% at 50% 70%,rgba(142,34,50,.45),transparent 70%),#130b0e}
 .sc img{width:100%;height:100%;object-fit:cover;object-position:50% 0;filter:grayscale(1) brightness(.8);transition:filter .8s,transform 1.2s cubic-bezier(.2,.8,.2,1)}
 .sc:hover img{filter:grayscale(0) brightness(.9);transform:scale(1.04)}
 .sc .ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(9,8,10,.95))}
@@ -299,7 +311,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <ul>
       <li><a href="#roster">Roster</a></li>
       <li><a href="#staff">Staff</a></li>
-      <li><a href="#mantra">Philosophy</a></li>
+      <li><a href="#team">Team</a></li>
       <li><a href="#apply">Contact</a></li>
     </ul>
     <a href="#apply" class="chip cta">Apply</a>
@@ -356,11 +368,19 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       </div>
     </div>
     <div class="staff">
-      <div class="sc"><img src="img/volzhyn.jpg" alt="Vladyslav Volzhyn"><div class="ov"></div>
+      <div class="sc"><img src="img/volzhyn.webp" alt="Vladyslav Volzhyn"><div class="ov"></div>
         <div class="tx"><div class="role">General Manager</div><h3>Vladyslav<span>Volzhyn</span></h3></div></div>
-      <div class="sc"><img src="img/burenko.jpg" alt="Pavlo Burenko"><div class="ov"></div>
+      <div class="sc"><img src="img/burenko.webp" alt="Pavlo Burenko"><div class="ov"></div>
         <div class="tx"><div class="role">Head Coach</div><h3>Pavlo<span>Burenko</span></h3></div></div>
     </div>
+  </div>
+</section>
+
+<section class="teamshot" id="team">
+  <div class="wrap">
+    <div class="shead"><div><p class="eyebrow">Season 2026/27</p>
+      <h2 class="split"><span class="ln"><span>ONE</span></span><span class="ln"><span><em>TEAM</em></span></span></h2></div></div>
+    <div class="tframe"><img src="img/team.jpg" alt="Freedom UA team photo" loading="lazy"></div>
   </div>
 </section>
 
@@ -470,6 +490,8 @@ const PLAYERS=[
  {id:'j-derkach',t:'j',n:54,first:'Oleksandr',last:'Derkach',pos:'Guard',g:'G',born:2011,h:"6'1",w:143,highlights:''},
 ];
 PLAYERS.forEach(p=>p.t=p.t||'a');
+const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-sokolov", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "topolnyk"]);
+const src=id=>CUT.has(id)?`img/${id}.webp`:`img/${id}.jpg`;
 const cm=h=>{const[f,i]=h.split("'").map(Number);return Math.round((f*12+i)*2.54)};
 const kg=l=>Math.round(l*0.4536);
 const ytId=u=>{const m=(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);return m&&m[1]};
@@ -480,7 +502,7 @@ grid.innerHTML=PLAYERS.map(p=>`
  <article class="card" data-g="${p.g}" data-t="${p.t}" data-id="${p.id}" tabindex="0">
    <div class="num">${p.n}</div>
    ${p.tag?`<span class="tag">${p.tag}</span>`:''}
-   <div class="photo"><img src="img/${p.id}.jpg" alt="${p.first} ${p.last}" loading="lazy"></div>
+   <div class="photo${CUT.has(p.id)?' cut':''}"><img src="${src(p.id)}" alt="${p.first} ${p.last}" loading="lazy"></div>
    <div class="info">
      <div class="pos">#${p.n} · ${p.pos}</div>
      <h3 class="${p.last.length>11?'long':''}"><span>${p.first}</span>${p.last}</h3>
@@ -505,8 +527,8 @@ tb.forEach(b=>b.onclick=()=>{if(b.dataset.t===team)return;tb.forEach(x=>x.classL
 counts();applyF(false);
 const tk=PLAYERS.filter(p=>p.t==='a').map(p=>`<span><b>#${p.n}</b>${p.first} ${p.last}</span>`).join('');
 document.getElementById('ticker').innerHTML=tk+tk;
-const heroIds=[['o','rublenko'],['s','vakulenko'],['c','suprun'],['s','r-manuilyk'],['o','bakhtieiev']];
-document.getElementById('squad').innerHTML=heroIds.map(([c,id])=>`<div class="ph ${c}"><img src="img/${id}.jpg" alt=""></div>`).join('');
+const heroIds=[['o','rublenko'],['s','babych'],['c','suprun'],['s','r-manuilyk'],['o','bakhtieiev']];
+document.getElementById('squad').innerHTML=heroIds.map(([c,id])=>`<div class="ph ${c}"><img src="${src(id)}" alt=""></div>`).join('');
 
 // ---- card tilt + cursor
 const cur=document.getElementById('cursor');
@@ -527,7 +549,7 @@ function nb(d){const p=PLAYERS[idx],L=teamList(p.t),k=L.indexOf(p);return L[(k+d
 function openP(i){
   idx=(i+PLAYERS.length)%PLAYERS.length;const p=PLAYERS[idx];
   document.getElementById('p-num').textContent=p.n;
-  const im=document.getElementById('p-img');im.src=`img/${p.id}.jpg`;im.alt=p.first+' '+p.last;
+  const im=document.getElementById('p-img');im.src=src(p.id);im.classList.toggle('cut',CUT.has(p.id));im.alt=p.first+' '+p.last;
   document.getElementById('p-pos').innerHTML=`#${p.n} · <b>${p.pos}</b>${p.t==='j'?' · Juniors':''}`;
   document.getElementById('p-name').innerHTML=`${p.first}<span>${p.last}</span>`;
   document.getElementById('p-stats').innerHTML=`
