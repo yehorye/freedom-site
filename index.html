@@ -596,7 +596,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
         <p class="eyebrow">Ukrainian Higher League · <b>Season 2026/27</b></p>
         <h2 class="split"><span class="ln"><span>GAME</span></span><span class="ln"><span><em>DAY</em></span></span></h2>
       </div>
-      <p class="gnote">Senior squad · official FBU statistics</p>
+      <p class="gnote">Senior squad · official FBU statistics<br><span id="gupd"></span></p>
     </div>
     <div class="gtop">
       <div class="next" id="next"></div>
@@ -838,7 +838,7 @@ function openP(i){
     <table class="log"><tr><th>Date</th><th>Opp</th><th>Res</th><th>MIN</th><th>PTS</th><th>REB</th><th>AST</th><th>STL</th></tr>
     ${S.L.map(({g,l})=>`<tr><td>${fmtD(g.date)}</td><td>${g.home||g.neutral?'vs':'@'} ${g.oppFull.split(' (')[0].split('-')[0].replace('Basketball Academy','BA').replace('BC ','')}</td><td class="${g.win?'w':'l'}">${g.win?'W':'L'} ${g.us}-${g.them}</td><td>${l.min.split(':')[0]}</td><td>${l.pts}</td><td>${l.reb}</td><td>${l.ast}</td><td>${l.stl}</td></tr>`).join('')}</table>`;
   const SA=seasonStats(p.id,GD),SE=seasonStats(p.id,ED);
-  ps.innerHTML=(SA?block(SA,'Season 2026/27 · Higher League'):'')+(SE?`<div class="psgap"></div>`+block(SE,'EYBL U16 · Ploiești stage'):'');
+  ps.innerHTML=(SA?block(SA,'Season 2026/27 · Higher League'):'')+(SE?`<div class="psgap"></div>`+block(SE,'EYBL U16 · Season 2026/27'):'');
   ps.style.display=(SA||SE)?'':'none';
   const id=ytId(p.highlights),hl=document.getElementById('p-hl'),v=document.getElementById('p-video');
   hl.classList.toggle('soon',!id);v.style.display='none';
@@ -887,7 +887,8 @@ const byId=Object.fromEntries(PLAYERS.map(p=>[p.id,p]));
     </div>`};
   document.getElementById('results').innerHTML=[...GD.games].reverse().map(resHTML).join('');
   document.getElementById('jresults').innerHTML=[...ED.games].reverse().map(resHTML).join('');
-  document.getElementById('jstage').textContent=ED.stage||'';document.getElementById('jlink').href=ED.teamUrl||'#';
+  document.getElementById('jstage').textContent=ED.stage||'';
+  if(GD.updated)document.getElementById('gupd').textContent='Updated '+new Date(GD.updated+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'});document.getElementById('jlink').href=ED.teamUrl||'#';
   document.getElementById('upcoming').innerHTML=GD.upcoming.map(u=>`<div class="up"><b>${u.date?fmtD(u.date):'TBA'}</b><span>${u.home?'vs':'@'} ${u.oppFull}</span><small>${u.home?'Home':'Away'}</small></div>`).join('');
 })();
 function seasonStats(id,D){D=D||GD;
