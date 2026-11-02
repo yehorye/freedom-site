@@ -368,9 +368,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       </div>
     </div>
     <div class="staff">
-      <div class="sc"><img src="img/volzhyn.webp" alt="Vladyslav Volzhyn"><div class="ov"></div>
+      <div class="sc"><img src="img/volzhyn.png" alt="Vladyslav Volzhyn"><div class="ov"></div>
         <div class="tx"><div class="role">General Manager</div><h3>Vladyslav<span>Volzhyn</span></h3></div></div>
-      <div class="sc"><img src="img/burenko.webp" alt="Pavlo Burenko"><div class="ov"></div>
+      <div class="sc"><img src="img/burenko.png" alt="Pavlo Burenko"><div class="ov"></div>
         <div class="tx"><div class="role">Head Coach</div><h3>Pavlo<span>Burenko</span></h3></div></div>
     </div>
   </div>
@@ -491,7 +491,7 @@ const PLAYERS=[
 ];
 PLAYERS.forEach(p=>p.t=p.t||'a');
 const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-sokolov", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "topolnyk"]);
-const src=id=>CUT.has(id)?`img/${id}.webp`:`img/${id}.jpg`;
+const src=id=>CUT.has(id)?`img/${id}.png`:`img/${id}.jpg`;
 const cm=h=>{const[f,i]=h.split("'").map(Number);return Math.round((f*12+i)*2.54)};
 const kg=l=>Math.round(l*0.4536);
 const ytId=u=>{const m=(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);return m&&m[1]};
