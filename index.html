@@ -490,7 +490,7 @@ const PLAYERS=[
  {id:'j-derkach',t:'j',n:54,first:'Oleksandr',last:'Derkach',pos:'Guard',g:'G',born:2011,h:"6'1",w:143,highlights:''},
 ];
 PLAYERS.forEach(p=>p.t=p.t||'a');
-const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "horb", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-sokolov", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "vakulenko"]);
+const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "horb", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-sokolov", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "topolnyk", "vakulenko"]);
 const src=id=>CUT.has(id)?`img/${id}.png`:`img/${id}.jpg`;
 const cm=h=>{const[f,i]=h.split("'").map(Number);return Math.round((f*12+i)*2.54)};
 const kg=l=>Math.round(l*0.4536);
