@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Freedom UA Basketball</title>
+<link rel="icon" type="image/png" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -29,7 +30,7 @@ img{display:block;max-width:100%}
 /* ---------- preloader ---------- */
 #loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center}
 #loader .lw{display:flex;flex-direction:column;align-items:center;gap:28px}
-#loader svg{width:92px;height:auto}
+#loader .logo{width:96px;height:auto}
 #loader .words{display:flex;gap:28px;font-family:var(--cond);font-weight:700;letter-spacing:.4em;font-size:15px}
 #loader .words span{opacity:0}
 #loader .bar{width:180px;height:1px;background:var(--line);overflow:hidden}
@@ -40,7 +41,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,bac
 nav.solid{background:rgba(9,8,10,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
 .brand{display:flex;align-items:center;gap:14px}
-.brand svg{width:30px;height:auto;filter:saturate(.85) drop-shadow(0 4px 14px rgba(0,0,0,.5))}
+.brand .logo{width:34px;height:auto;filter:saturate(.85) drop-shadow(0 4px 14px rgba(0,0,0,.5))}
 .brand .wm{display:flex;flex-direction:column;gap:3px;padding-left:14px;border-left:1px solid rgba(255,255,255,.12)}
 .brand .wm b{font-family:var(--cond);font-weight:800;font-size:21px;line-height:.9;letter-spacing:.06em}
 .brand .wm b i{font-style:normal;background:linear-gradient(180deg,#3b7be0 50%,#f2c230 50%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-left:4px}
@@ -286,7 +287,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
 <div id="loader">
   <div class="lw">
-    <svg viewBox="-4 -4 108 118"><use href="#logo"/></svg>
+    <img src="img/logo.png" alt="Freedom UA" class="logo">
     <div class="words"><span>BELIEVE</span><span>TRAIN</span><span>SUCCEED</span></div>
     <div class="bar"><i></i></div>
   </div>
@@ -294,7 +295,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
 <nav id="nav">
   <div class="wrap">
-    <a href="#top" class="brand"><svg viewBox="-4 -4 108 118"><use href="#logo"/></svg><span class="wm"><b>FREEDOM<i>UA</i></b><small>Basketball Academy</small></span></a>
+    <a href="#top" class="brand"><img src="img/logo.png" alt="Freedom UA" class="logo"><span class="wm"><b>FREEDOM<i>UA</i></b><small>Basketball Academy</small></span></a>
     <ul>
       <li><a href="#roster">Roster</a></li>
       <li><a href="#staff">Staff</a></li>
