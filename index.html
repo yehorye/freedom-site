@@ -282,6 +282,37 @@ section{position:relative}
 .fhs small{display:block;margin-top:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
 @media(max-width:860px){.fhbox{grid-template-columns:1fr;padding:30px;gap:30px;border-radius:18px}.fhf{width:60px;height:60px;font-size:40px;border-radius:14px}.fhmark b{font-size:13vw}.fhs b{font-size:32px}.fhbox .btn{width:100%;justify-content:center}}
 
+
+/* ---------- abroad ---------- */
+#abroad{padding:120px 0;position:relative;overflow:hidden;background:radial-gradient(60% 50% at 85% 0%,rgba(142,34,50,.28),transparent 70%),var(--bg)}
+.ab-sub{color:var(--mute);max-width:46ch;line-height:1.7;font-size:15px}
+.ab-count{display:flex;gap:34px;margin-top:6px}
+.ab-count b{display:block;font-family:var(--cond);font-weight:800;font-size:54px;line-height:1;color:#fff}
+.ab-count small{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
+.abg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.ab{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#120a0d;transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .4s,box-shadow .5s}
+.ab:hover{transform:translateY(-8px);border-color:rgba(200,60,80,.55);box-shadow:0 30px 60px -30px rgba(142,34,50,.8)}
+.ab .ph{aspect-ratio:1060/1313;overflow:hidden;position:relative}
+.ab .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.ab:hover .ph img{transform:scale(1.05)}
+.ab .ph:after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(transparent,#120a0d)}
+.ab .bd{padding:4px 22px 22px;position:relative;margin-top:-34px;z-index:2}
+.ab .lv{display:inline-block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:rgba(142,34,50,.35);border:1px solid rgba(200,60,80,.45);color:#f3c9cf;margin-bottom:12px}
+.ab h3{font-family:var(--cond);font-weight:800;font-size:30px;line-height:.95;letter-spacing:.01em;text-transform:uppercase}
+.ab h3 span{display:block;color:var(--mute);font-weight:600;font-size:17px;letter-spacing:.08em}
+.route{display:flex;align-items:center;gap:10px;margin:16px 0 14px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#d9d0d2}
+.route i{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.15),rgba(200,60,80,.9));position:relative}
+.route i:after{content:"";position:absolute;right:-1px;top:-3px;border:3.5px solid transparent;border-left:6px solid rgba(220,70,90,1)}
+.route em{font-style:normal;color:#fff}
+.ab .tm{font-size:14.5px;color:#fff;font-weight:500}
+.ab .tm small{display:block;color:var(--mute);font-size:12px;font-weight:400;margin-top:3px}
+.ab .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.ab .tags span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:4px 9px;border-radius:6px;border:1px solid var(--line);color:#cfc6c8}
+.ab .tags .nt{border-color:rgba(255,213,0,.45);color:#ffe066;background:linear-gradient(90deg,rgba(0,87,183,.25),rgba(255,213,0,.12))}
+.ab.cls .bd{margin-top:-60px}
+@media(max-width:980px){.abg{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){#abroad{padding:80px 0}.abg{grid-template-columns:1fr 1fr;gap:12px;margin-top:34px}.ab{border-radius:14px}.ab .bd{padding:0 12px 14px;margin-top:-26px}.ab h3{font-size:19px}.ab h3 span{font-size:12px}.route{font-size:9px;gap:6px;margin:10px 0 8px;letter-spacing:.06em}.ab .tm{font-size:12px}.ab .tm small{font-size:10.5px}.ab .lv{font-size:8px;padding:4px 7px;margin-bottom:8px}.ab .tags span{font-size:8px;padding:3px 6px}.ab-count{gap:22px}.ab-count b{font-size:40px}}
+
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -527,6 +558,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <ul>
       <li><a href="#roster">Roster</a></li>
       <li><a href="#games">Games</a></li>
+      <li><a href="#abroad">Abroad</a></li>
       <li><a href="#staff">Staff</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#partner">Partner</a></li>
@@ -540,10 +572,11 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   <ul>
     <li><a href="#roster"><small>01</small>Roster</a></li>
     <li><a href="#games"><small>02</small>Games</a></li>
-    <li><a href="#staff"><small>03</small>Staff</a></li>
-    <li><a href="#team"><small>04</small>Team</a></li>
-    <li><a href="#partner"><small>05</small>Partner</a></li>
-    <li><a href="#contact"><small>06</small>Contact</a></li>
+    <li><a href="#abroad"><small>03</small>Abroad</a></li>
+    <li><a href="#staff"><small>04</small>Staff</a></li>
+    <li><a href="#team"><small>05</small>Team</a></li>
+    <li><a href="#partner"><small>06</small>Partner</a></li>
+    <li><a href="#contact"><small>07</small>Contact</a></li>
   </ul>
   <div class="mfoot"><span>Believe · Train · Succeed</span><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram ↗</a></div>
 </div>
@@ -615,6 +648,33 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   </div>
 </section>
 
+<section id="abroad">
+  <div class="wrap">
+    <div class="shead">
+      <div>
+        <p class="eyebrow">Alumni · From Kyiv to the world</p>
+        <h2 class="split"><span class="ln"><span>NEXT</span></span><span class="ln"><span><em>CHAPTER</em></span></span></h2>
+      </div>
+      <div><p class="ab-sub">Freedom UA players who took the next step abroad: pro clubs in Europe, universities in Canada and prep schools in the USA.</p>
+        <div class="ab-count"><div><b>6</b><small>Players abroad</small></div><div><b>3</b><small>Countries</small></div><div><b>2</b><small>Ukraine NT</small></div></div></div>
+    </div>
+    <div class="abg">
+      <article class="ab"><div class="ph"><img src="img/al-kashura.jpg" alt="Egor Kashura" loading="lazy"></div><div class="bd"><span class="lv">Pro club · Europe</span>
+        <h3>Kashura<span>Egor</span></h3><div class="route">Kyiv<i></i><em>Olbia, ITA</em></div><div class="tm">Santa Croce Basket Olbia<small>Sardinia, Italy</small></div></div></article>
+      <article class="ab"><div class="ph"><img src="img/al-kobylinskyi.jpg" alt="Mykyta Kobylinskyi" loading="lazy"></div><div class="bd"><span class="lv">University · Canada</span>
+        <h3>Kobylinskyi<span>Mykyta</span></h3><div class="route">Kyiv<i></i><em>BC, CAN</em></div><div class="tm">UNBC Timberwolves<small>University of Northern British Columbia</small></div></div></article>
+      <article class="ab"><div class="ph"><img src="img/al-pankevych.jpg" alt="Ivan Pankevych" loading="lazy"></div><div class="bd"><span class="lv">Prep school · USA</span>
+        <h3>Pankevych<span>Ivan</span></h3><div class="route">Kyiv<i></i><em>Roanoke, USA</em></div><div class="tm">Roanoke Catholic School<small>Roanoke, Virginia</small></div><div class="tags"><span>NLA Academy</span></div></div></article>
+      <article class="ab"><div class="ph"><img src="img/al-klyavin.jpg" alt="Robert Klyavin" loading="lazy"></div><div class="bd"><span class="lv">Prep school · USA</span>
+        <h3>Klyavin<span>Robert</span></h3><div class="route">Kyiv<i></i><em>Maryland, USA</em></div><div class="tm">Springdale Lions<small>Springdale Prep, Maryland</small></div><div class="tags"><span>NLA Academy</span><span class="nt">Ukraine NT · U18</span></div></div></article>
+      <article class="ab"><div class="ph"><img src="img/al-koshelev.jpg" alt="Yehor Koshelev" loading="lazy"></div><div class="bd"><span class="lv">Prep · USA</span>
+        <h3>Koshelev<span>Yehor</span></h3><div class="route">Kyiv<i></i><em>Iowa, USA</em></div><div class="tm">Iowa United Basketball<small>Iowa, USA</small></div><div class="tags"><span>NLA Academy</span><span class="nt">Ukraine NT · U18</span></div></div></article>
+      <article class="ab cls"><div class="ph"><img src="img/al-class.jpg" alt="Freedom UA alumni" loading="lazy"></div><div class="bd"><span class="lv">Class of 2026</span>
+        <h3>Next chapter<span>One academy · three countries</span></h3><div class="route">Kyiv<i></i><em>Damir Volzhyn</em></div><div class="tm">Springdale Lions<small>Springdale Prep, Maryland · Powered by NLA Academy</small></div></div></article>
+    </div>
+  </div>
+</section>
+
 <section id="staff">
   <div class="wrap">
     <div class="shead">
@@ -683,7 +743,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
 
 
-<footer><div class="wrap"><span>© 2026 Freedom UA Basketball Academy</span><span class="flinks"><a href="#roster">Roster</a><a href="#staff">Staff</a><a href="#contact">Contact</a><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram</a></span><a href="#top">Back to top ↑</a></div></footer>
+<footer><div class="wrap"><span>© 2026 Freedom UA Basketball Academy</span><span class="flinks"><a href="#roster">Roster</a><a href="#abroad">Abroad</a><a href="#staff">Staff</a><a href="#contact">Contact</a><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram</a></span><a href="#top">Back to top ↑</a></div></footer>
 
 <!-- player profile -->
 <div id="profile" aria-modal="true" role="dialog">
