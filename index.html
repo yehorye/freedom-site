@@ -312,6 +312,127 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   font-size:10px;letter-spacing:.2em;font-weight:600;text-transform:uppercase;pointer-events:none;z-index:95;transform:scale(0);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .cursor.on{transform:scale(1)}
 @media(hover:none){.cursor{display:none}}
+
+/* ================= MOBILE ================= */
+.burger{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);position:relative;margin-left:10px}
+.burger i{position:absolute;left:13px;right:13px;height:1.5px;background:var(--ink);transition:transform .4s,top .4s}
+.burger i:first-child{top:18px}.burger i:last-child{top:25px}
+.burger.x i:first-child{top:21px;transform:rotate(45deg)}.burger.x i:last-child{top:21px;transform:rotate(-45deg)}
+.mmenu{position:fixed;inset:0;z-index:49;background:rgba(9,8,10,.97);backdrop-filter:blur(16px);display:flex;flex-direction:column;justify-content:space-between;padding:110px 7vw 40px;
+  clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.7,0,.2,1);pointer-events:none}
+.mmenu.open{clip-path:inset(0 0 0 0);pointer-events:auto}
+.mmenu ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.mmenu ul a{display:flex;align-items:baseline;gap:16px;font-family:var(--cond);font-weight:800;font-size:56px;line-height:1.05;text-transform:uppercase}
+.mmenu ul a small{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.2em;color:#d99aa4}
+.mfoot a{color:var(--ink)}
+.mfoot{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:860px){.burger{display:block}nav .chip{display:none}}
+
+@media(max-width:760px){
+  .wrap{width:90vw}
+  nav .wrap{height:64px}
+  .brand .logo{width:28px}.brand{gap:10px}.brand .wm{padding-left:10px}
+  .brand .wm b{font-size:13px;letter-spacing:.26em}.brand .wm small{font-size:7px;letter-spacing:.34em}
+  section{scroll-margin-top:64px}
+
+  /* hero */
+  .hero{min-height:0;padding-top:64px;justify-content:flex-start}
+  .hero-title{position:relative;top:auto;padding-top:5vh}
+  .hero-title .kicker{font-size:9px;letter-spacing:.3em;margin-bottom:10px}
+  .mega{font-size:27vw}
+  .hero-squad{height:auto;margin-top:-9vw;padding:0 2vw}
+  .hero-squad .ph,.hero-squad .ph.c{width:33vw;margin:0 -7vw}
+  .hero-squad .ph.c{width:40vw;z-index:4}
+  .hero-squad .ph.s{z-index:3}
+  .hero-squad .ph.o{display:block;z-index:2}
+  .hero .glow{height:60%}
+  .hero-bottom{padding:26px 0 30px;margin-top:-4vw}
+  .hero-bottom .wrap{flex-direction:column;align-items:stretch;gap:22px}
+  .motto{font-size:15px;letter-spacing:.32em;gap:.9em;justify-content:center}
+  .hcta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}
+  .hcta .btn{justify-content:center;padding:14px 10px;font-size:10.5px;letter-spacing:.14em}
+  .facts{justify-content:center;gap:40px;padding-top:18px;border-top:1px solid var(--line)}
+  .facts div{font-size:32px;text-align:center}
+  .scrollcue{display:none}
+  .ticker{padding:14px 0}.ticker span{font-size:17px}
+
+  /* section heads */
+  .shead{margin-bottom:30px;gap:18px}
+  .shead h2{font-size:21vw}
+  .eyebrow{font-size:10px;letter-spacing:.3em}
+  .tnote,.gnote{font-size:10px;letter-spacing:.18em;line-height:1.7}
+
+  /* roster */
+  #roster{padding:90px 0 70px}
+  .tside{width:100%;align-items:stretch;gap:10px}
+  .seg.teams{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .teams button{text-align:center}
+  .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -5vw;padding:0 5vw;-webkit-overflow-scrolling:touch}
+  .filters::-webkit-scrollbar{display:none}
+  .filters button{flex:none;padding:10px 16px}
+  .grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card{aspect-ratio:3/4.3;border-radius:12px}
+  .card .num{font-size:30vw;top:-2%;right:-4%}
+  .card .photo.cut{inset:4% -12% 0 -12%}
+  .card .info{padding:46px 12px 12px}
+  .card .pos{font-size:8.5px;letter-spacing:.16em}
+  .card h3,.card h3.long{font-size:6.4vw;margin-top:4px}
+  .card h3 span{font-size:.6em}
+  .card .meta{margin-top:8px;padding-top:8px;font-size:10px;line-height:1.5}
+  .card .meta .hl{display:none}
+  .card .tag{top:8px;left:8px;font-size:8px;padding:4px 7px}
+
+  /* games */
+  #games{padding:80px 0 40px}
+  .next,.stand{padding:22px;border-radius:16px}
+  .nteams{font-size:30px;gap:8px 10px}
+  .nteams span:last-child{font-size:22px;width:100%}
+  .nmeta{font-size:12px}
+  .cd{gap:6px;margin-top:20px}.cd div{padding:12px 4px;border-radius:10px}.cd b{font-size:30px}.cd small{font-size:8px;letter-spacing:.16em}
+  .glabel{margin:34px 0 12px}
+  .res{grid-template-columns:auto 1fr;grid-template-areas:"d t" "p p" "b b";gap:12px 16px;padding:16px 18px;border-radius:14px}
+  .res:hover{transform:none}
+  .rdate{grid-area:d;font-size:18px}.rteams{grid-area:t;gap:10px}.rteams b{font-size:26px}.rteams span{font-size:12px;width:100%}.rteams span.rbadge{width:28px;height:28px;flex:none}
+  .rtop{grid-area:p;display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--line)}.rtop b{margin:0}
+  .rbtn{grid-area:b}.rbtn a{flex:1;text-align:center;padding:11px 8px}
+  .up{padding:14px 16px}
+
+  /* team, staff, mantra, contact */
+  .teamshot{padding:30px 0 10px}.tframe{border-radius:14px}
+  #staff{padding:80px 0}
+  .sc{aspect-ratio:4/4.6}.sc .tx{left:20px;right:20px;bottom:20px}.sc h3{font-size:13vw}
+  .mantra{padding:80px 0 70px}.mantra .w{font-size:22vw}
+  .partner{padding:0 0 70px}.pbox{padding:26px;border-radius:16px;gap:24px}.pbox h3{font-size:11vw}
+  .clink{padding:18px}.clink span{font-size:20px}
+  .apply{padding:20px 0 70px}.form{padding:20px;border-radius:16px}
+  .form .seg{display:grid;grid-template-columns:1fr;width:100%;border-radius:16px}.form .seg button{border-radius:12px}
+  .btn.big{width:100%;justify-content:center}
+  footer .wrap{flex-direction:column;align-items:center;text-align:center;gap:14px}
+  .flinks{flex-wrap:wrap;justify-content:center;gap:16px}
+
+  /* profile */
+  #profile .pclose{top:14px;right:14px;width:44px;height:44px}
+  .pf{display:block;min-height:0}
+  .pf-photo{min-height:0;height:62vw;max-height:420px}
+  .pf-photo img,.pf-photo img.cut{height:100%}
+  .pf-photo .bignum{font-size:56vw;bottom:-8%}
+  .pf-body{padding:22px 5vw 40px}
+  .pf-body h1{font-size:15vw;margin-top:10px}
+  .pf-stats{margin-top:24px}.pf-stats div{padding:14px 0}.pf-stats div:nth-child(even){padding-left:16px}
+  .pf-stats b{font-size:26px}.pf-stats b i{display:block;margin:4px 0 0;font-size:11px}
+  .pstats{margin-top:24px}
+  .psg{gap:6px}.psg div{padding:10px 2px;border-radius:10px}.psg b{font-size:22px}.psg small{font-size:8.5px;letter-spacing:.12em}
+  .log{font-size:11px}.log th{font-size:8.5px;letter-spacing:.08em;padding:6px 2px}.log td{padding:7px 2px}
+  .log th:nth-child(4),.log td:nth-child(4),.log th:nth-child(8),.log td:nth-child(8){display:none}
+  .hlplate{padding:16px;gap:14px;margin-top:24px}.hlplate .play{width:50px;height:50px}.hlplate h4{font-size:22px}
+  .pf-nav{padding-top:30px}.pf-nav span{font-size:18px}
+}
+@media(max-width:380px){
+  .mega{font-size:26vw}
+  .card h3,.card h3.long{font-size:6vw}
+  .motto{font-size:13px}
+  .mmenu a{font-size:46px}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -361,8 +482,19 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <li><a href="#apply">Contact</a></li>
     </ul>
     <a href="#apply" class="chip cta">Apply</a>
+    <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
   </div>
 </nav>
+<div class="mmenu" id="mmenu">
+  <ul>
+    <li><a href="#roster"><small>01</small>Roster</a></li>
+    <li><a href="#games"><small>02</small>Games</a></li>
+    <li><a href="#staff"><small>03</small>Staff</a></li>
+    <li><a href="#team"><small>04</small>Team</a></li>
+    <li><a href="#apply"><small>05</small>Contact</a></li>
+  </ul>
+  <div class="mfoot"><span>Believe · Train · Succeed</span><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram ↗</a></div>
+</div>
 
 <header class="hero" id="top">
   <div class="glow"></div>
@@ -601,11 +733,19 @@ document.getElementById('ticker').innerHTML=tk+tk;
 const heroIds=[['o','rublenko'],['s','babych'],['c','r-manuilyk'],['s','mykhailovych'],['o','vakulenko']];
 document.getElementById('squad').innerHTML=heroIds.map(([c,id])=>`<div class="ph ${c}"><img src="img/hero-${id}.png" alt=""></div>`).join('');
 
+// ---- mobile menu
+const mm=document.getElementById('mmenu'),bg=document.getElementById('burger');
+function menu(o){mm.classList.toggle('open',o);bg.classList.toggle('x',o);document.body.classList.toggle('lock',o);
+  if(o)gsap.fromTo('#mmenu li',{y:40,opacity:0},{y:0,opacity:1,duration:.7,stagger:.06,ease:'expo.out',delay:.15})}
+bg.onclick=()=>menu(!mm.classList.contains('open'));
+mm.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>menu(false)));
+const TOUCH=matchMedia('(hover:none)').matches;
+
 // ---- card tilt + cursor
 const cur=document.getElementById('cursor');
 let cx=0,cy=0;addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;gsap.to(cur,{x:cx,y:cy,duration:.35,ease:'power3'})});
 grid.querySelectorAll('.card').forEach(c=>{
-  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  if(!TOUCH)c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
     c.style.transform=`rotateY(${(x-.5)*10}deg) rotateX(${(.5-y)*10}deg)`;c.style.setProperty('--mx',x*100+'%');c.style.setProperty('--my',y*100+'%')});
   c.addEventListener('mouseenter',()=>cur.classList.add('on'));
   c.addEventListener('mouseleave',()=>{c.style.transform='';cur.classList.remove('on')});
