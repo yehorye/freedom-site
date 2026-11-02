@@ -189,7 +189,7 @@ section{position:relative}
 .card .photo.cut img{object-position:50% 0;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent 98%);mask-image:linear-gradient(180deg,#000 62%,transparent 98%)}
 .card .photo.cut{inset:6% -8% 0 -8%}
 .hero-squad .ph{-webkit-mask-image:none;mask-image:none}
-.hero-squad .ph img{aspect-ratio:9/10;object-position:50% 0;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 97%);mask-image:linear-gradient(180deg,#000 60%,transparent 97%)}
+.hero-squad .ph img{aspect-ratio:620/700;object-position:50% 0;-webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 97%);mask-image:linear-gradient(180deg,#000 60%,transparent 97%)}
 .pf-photo img.cut{-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent 99%);mask-image:linear-gradient(180deg,#000 70%,transparent 99%);aspect-ratio:9/10;object-position:50% 0}
 .teamshot{padding:40px 0 20px}
 .tframe{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#fff}
@@ -528,7 +528,7 @@ counts();applyF(false);
 const tk=PLAYERS.filter(p=>p.t==='a').map(p=>`<span><b>#${p.n}</b>${p.first} ${p.last}</span>`).join('');
 document.getElementById('ticker').innerHTML=tk+tk;
 const heroIds=[['o','rublenko'],['s','babych'],['c','r-manuilyk'],['s','mykhailovych'],['o','vakulenko']];
-document.getElementById('squad').innerHTML=heroIds.map(([c,id])=>`<div class="ph ${c}"><img src="${src(id)}" alt=""></div>`).join('');
+document.getElementById('squad').innerHTML=heroIds.map(([c,id])=>`<div class="ph ${c}"><img src="img/hero-${id}.png" alt=""></div>`).join('');
 
 // ---- card tilt + cursor
 const cur=document.getElementById('cursor');
