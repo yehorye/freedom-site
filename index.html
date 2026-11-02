@@ -99,6 +99,10 @@ section{position:relative}
 
 /* ---------- roster ---------- */
 #roster{padding:150px 0 120px}
+.tside{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+@media(max-width:860px){.tside{align-items:flex-start}}
+.teams button sup{font-size:9px;margin-left:5px;opacity:.6}
+.tnote{margin-top:16px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#d99aa4}
 .filters{display:flex;gap:8px;flex-wrap:wrap}
 .filters button{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;padding:11px 18px;border-radius:40px;border:1px solid var(--line);color:var(--mute);transition:all .35s}
 .filters button:hover{color:var(--ink);border-color:rgba(255,255,255,.25)}
@@ -119,6 +123,8 @@ section{position:relative}
 .card .info{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:70px 20px 18px;background:linear-gradient(180deg,transparent,rgba(13,10,11,.85) 45%,#0d0a0b)}
 .card .pos{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#d99aa4}
 .card h3{font-family:var(--cond);font-weight:800;font-size:clamp(26px,2.6vw,38px);line-height:.92;margin-top:6px;text-transform:uppercase}
+.card h3.long{font-size:clamp(22px,2.1vw,31px)}
+.card h3{overflow-wrap:anywhere}
 .card h3 span{display:block;font-weight:500;color:var(--mute);font-size:.62em;letter-spacing:.04em}
 .card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:12px;color:var(--mute)}
 .card .hl{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.55;transition:opacity .4s}
@@ -326,13 +332,15 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <div>
         <p class="eyebrow">Season 2026/27 · <b>Squad</b></p>
         <h2 class="split"><span class="ln"><span>THE</span></span><span class="ln"><span><em>ROSTER</em></span></span></h2>
+        <p class="tnote" id="tnote">Senior squad · Season 2026/27</p>
       </div>
+      <div class="tside"><div class="seg teams" id="teams"><button class="on" data-t="a">First team<sup></sup></button><button data-t="j">Juniors<sup></sup></button></div>
       <div class="filters" id="filters">
         <button class="on" data-f="all">All</button>
         <button data-f="G">Guards</button>
         <button data-f="F">Forwards</button>
         <button data-f="C">Centers</button>
-      </div>
+      </div></div>
     </div>
     <div class="grid" id="grid"></div>
   </div>
@@ -444,7 +452,23 @@ const PLAYERS=[
  {id:'rublenko',n:22,first:'Ihor',last:'Rublenko',pos:'Forward',g:'F',born:2009,h:"6'6",w:225,highlights:''},
  {id:'bakhtieiev',n:30,first:'Vladyslav',last:'Bakhtieiev',pos:'Shooting Guard',g:'G',born:2008,h:"6'2",w:185,highlights:''},
  {id:'r-manuilyk',n:35,first:'Roman',last:'Manuilyk',pos:'Combo Guard',g:'G',born:2008,h:"6'5",w:185,highlights:'',tag:'Captain'},
+ {id:'j-koretskyi',t:'j',n:1,first:'Denys',last:'Koretskyi',pos:'Guard',g:'G',born:2011,h:"6'1",w:139,highlights:''},
+ {id:'j-bilenko',t:'j',n:2,first:'Yehor',last:'Bilenko',pos:'Guard',g:'G',born:2011,h:"6'2",w:168,highlights:''},
+ {id:'j-sokolov',t:'j',n:7,first:'Volodymyr',last:'Sokolov',pos:'Guard',g:'G',born:2011,h:"5'9",w:139,highlights:''},
+ {id:'j-genchmazlumo',t:'j',n:9,first:'Timur',last:'Genchmazlumo',pos:'Guard',g:'G',born:2011,h:"5'6",w:132,highlights:''},
+ {id:'j-striukov',t:'j',n:10,first:'Ivan',last:'Striukov',pos:'Forward',g:'F',born:2011,h:"6'4",w:198,highlights:''},
+ {id:'j-samokhatny',t:'j',n:11,first:'Anton',last:'Samokhatny',pos:'Guard',g:'G',born:2011,h:"6'0",w:141,highlights:''},
+ {id:'j-didusenko',t:'j',n:14,first:'Tymofii',last:'Didusenko',pos:'Guard',g:'G',born:2011,h:"5'8",w:133,highlights:''},
+ {id:'j-solomyanikov',t:'j',n:17,first:'Denis',last:'Solomyanikov',pos:'Guard',g:'G',born:2010,h:"6'1",w:161,highlights:''},
+ {id:'j-bezsudnyi',t:'j',n:22,first:'Artem',last:'Bezsudnyi',pos:'Guard',g:'G',born:2010,h:"6'2",w:148,highlights:''},
+ {id:'j-shvetsov',t:'j',n:23,first:'Mykhailo',last:'Shvetsov',pos:'Guard',g:'G',born:2011,h:"6'0",w:154,highlights:''},
+ {id:'j-khodzinskyi',t:'j',n:32,first:'Yehor',last:'Khodzinskyi',pos:'Forward',g:'F',born:2011,h:"6'3",w:154,highlights:''},
+ {id:'j-volzhyn',t:'j',n:34,first:'Adam',last:'Volzhyn',pos:'Guard',g:'G',born:2012,h:"6'1",w:145,highlights:''},
+ {id:'j-sabirov',t:'j',n:50,first:'Timofey',last:'Sabirov',pos:'Center',g:'C',born:2011,h:"6'7",w:265,highlights:''},
+ {id:'j-arkhypenko',t:'j',n:53,first:'Andrii',last:'Arkhypenko',pos:'Guard',g:'G',born:2010,h:"5'6",w:156,highlights:''},
+ {id:'j-derkach',t:'j',n:54,first:'Oleksandr',last:'Derkach',pos:'Guard',g:'G',born:2011,h:"6'1",w:143,highlights:''},
 ];
+PLAYERS.forEach(p=>p.t=p.t||'a');
 const cm=h=>{const[f,i]=h.split("'").map(Number);return Math.round((f*12+i)*2.54)};
 const kg=l=>Math.round(l*0.4536);
 const ytId=u=>{const m=(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/);return m&&m[1]};
@@ -452,33 +476,36 @@ const ytId=u=>{const m=(u||'').match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{
 // ---- render grid, ticker, hero squad
 const grid=document.getElementById('grid');
 grid.innerHTML=PLAYERS.map(p=>`
- <article class="card" data-g="${p.g}" data-id="${p.id}" tabindex="0">
+ <article class="card" data-g="${p.g}" data-t="${p.t}" data-id="${p.id}" tabindex="0">
    <div class="num">${p.n}</div>
    ${p.tag?`<span class="tag">${p.tag}</span>`:''}
    <div class="photo"><img src="img/${p.id}.jpg" alt="${p.first} ${p.last}" loading="lazy"></div>
    <div class="info">
      <div class="pos">#${p.n} · ${p.pos}</div>
-     <h3><span>${p.first}</span>${p.last}</h3>
+     <h3 class="${p.last.length>11?'long':''}"><span>${p.first}</span>${p.last}</h3>
      <div class="meta"><span>${p.h}" · ${cm(p.h)} cm · ${p.born}</span><span class="hl"><i></i>Highlights</span></div>
    </div>
    <div class="shine"></div>
  </article>`).join('');
-const fb=document.querySelectorAll('#filters button');
-fb.forEach(b=>{const f=b.dataset.f;const c=f==='all'?PLAYERS.length:PLAYERS.filter(p=>p.g.includes(f)).length;b.innerHTML+=`<sup>${c}</sup>`});
-const tk=PLAYERS.map(p=>`<span><b>#${p.n}</b>${p.first} ${p.last}</span>`).join('');
+const fb=document.querySelectorAll('#filters button'),tb=document.querySelectorAll('#teams button');
+let team='a',posF='all';
+const NOTE={a:'Senior squad · Season 2026/27',j:'Junior squad · EUBL & international tournaments'};
+function counts(){fb.forEach(b=>{const f=b.dataset.f,L=PLAYERS.filter(p=>p.t===team&&(f==='all'||p.g.includes(f))).length;
+  let sp=b.querySelector('sup');if(!sp){sp=document.createElement('sup');b.appendChild(sp)}sp.textContent=L;b.style.display=L?'':'none'});
+  tb.forEach(b=>b.querySelector('sup').textContent=PLAYERS.filter(p=>p.t===b.dataset.t).length)}
+function applyF(anim){const cards=[...grid.children];
+  const show=c=>c.dataset.t===team&&(posF==='all'||c.dataset.g.includes(posF));
+  const go=()=>{cards.forEach(c=>c.classList.toggle('hide',!show(c)));
+    if(anim)gsap.fromTo(cards.filter(c=>!c.classList.contains('hide')),{opacity:0,y:30},{opacity:1,y:0,duration:.6,stagger:.04,ease:'power3.out'})};
+  if(anim)gsap.to(cards.filter(c=>!c.classList.contains('hide')),{opacity:0,y:20,duration:.25,stagger:.01,onComplete:go});else go()}
+fb.forEach(b=>b.onclick=()=>{fb.forEach(x=>x.classList.remove('on'));b.classList.add('on');posF=b.dataset.f;applyF(true)});
+tb.forEach(b=>b.onclick=()=>{if(b.dataset.t===team)return;tb.forEach(x=>x.classList.remove('on'));b.classList.add('on');team=b.dataset.t;posF='all';
+  fb.forEach(x=>x.classList.toggle('on',x.dataset.f==='all'));document.getElementById('tnote').textContent=NOTE[team];counts();applyF(true)});
+counts();applyF(false);
+const tk=PLAYERS.filter(p=>p.t==='a').map(p=>`<span><b>#${p.n}</b>${p.first} ${p.last}</span>`).join('');
 document.getElementById('ticker').innerHTML=tk+tk;
 const heroIds=[['o','rublenko'],['s','vakulenko'],['c','suprun'],['s','r-manuilyk'],['o','bakhtieiev']];
 document.getElementById('squad').innerHTML=heroIds.map(([c,id])=>`<div class="ph ${c}"><img src="img/${id}.jpg" alt=""></div>`).join('');
-
-// ---- filters
-fb.forEach(b=>b.onclick=()=>{
-  fb.forEach(x=>x.classList.remove('on'));b.classList.add('on');const f=b.dataset.f;
-  const cards=[...grid.children];
-  gsap.to(cards,{opacity:0,y:20,duration:.25,stagger:.01,onComplete:()=>{
-    cards.forEach(c=>c.classList.toggle('hide',!(f==='all'||c.dataset.g.includes(f))));
-    gsap.fromTo(cards.filter(c=>!c.classList.contains('hide')),{opacity:0,y:30},{opacity:1,y:0,duration:.6,stagger:.04,ease:'power3.out'});
-  }});
-});
 
 // ---- card tilt + cursor
 const cur=document.getElementById('cursor');
@@ -494,11 +521,13 @@ grid.querySelectorAll('.card').forEach(c=>{
 
 // ---- profile
 const pr=document.getElementById('profile');let idx=-1;
+const teamList=t=>PLAYERS.filter(p=>p.t===t);
+function nb(d){const p=PLAYERS[idx],L=teamList(p.t),k=L.indexOf(p);return L[(k+d+L.length)%L.length]}
 function openP(i){
   idx=(i+PLAYERS.length)%PLAYERS.length;const p=PLAYERS[idx];
   document.getElementById('p-num').textContent=p.n;
   const im=document.getElementById('p-img');im.src=`img/${p.id}.jpg`;im.alt=p.first+' '+p.last;
-  document.getElementById('p-pos').innerHTML=`#${p.n} · <b>${p.pos}</b>`;
+  document.getElementById('p-pos').innerHTML=`#${p.n} · <b>${p.pos}</b>${p.t==='j'?' · Juniors':''}`;
   document.getElementById('p-name').innerHTML=`${p.first}<span>${p.last}</span>`;
   document.getElementById('p-stats').innerHTML=`
     <div><small>Position</small><b>${p.pos}</b></div>
@@ -510,7 +539,7 @@ function openP(i){
   document.getElementById('p-hltext').textContent=id?'Watch game highlights':'Highlight reel coming soon';
   hl.style.cursor='pointer';
   hl.onclick=()=>{if(id){const a=document.createElement('a');a.href=p.highlights;a.target='_blank';a.rel='noopener';a.click()}else{v.style.display=v.style.display==='block'?'none':'block';if(v.style.display==='block')gsap.fromTo(v,{opacity:0,y:20},{opacity:1,y:0,duration:.6,ease:'expo.out'})}};
-  const pv=PLAYERS[(idx-1+PLAYERS.length)%PLAYERS.length],nx=PLAYERS[(idx+1)%PLAYERS.length];
+  const pv=nb(-1),nx=nb(1);
   document.querySelector('#p-prev span').textContent=pv.last;document.querySelector('#p-next span').textContent=nx.last;
   if(!pr.classList.contains('open')){pr.classList.add('open');document.body.classList.add('lock');gsap.fromTo(pr,{clipPath:'inset(100% 0 0 0)'},{clipPath:'inset(0% 0 0 0)',duration:.8,ease:'expo.inOut'})}
   pr.scrollTop=0;
@@ -522,8 +551,8 @@ function closeP(){gsap.to(pr,{clipPath:'inset(0 0 100% 0)',duration:.6,ease:'exp
 function route(){const h=location.hash.slice(1);const i=PLAYERS.findIndex(p=>p.id===h);if(i>=0)openP(i);else if(pr.classList.contains('open'))closeP()}
 addEventListener('hashchange',route);
 document.getElementById('pclose').onclick=()=>{history.pushState('',document.title,location.pathname+location.search);closeP()};
-document.getElementById('p-prev').onclick=()=>location.hash=PLAYERS[(idx-1+PLAYERS.length)%PLAYERS.length].id;
-document.getElementById('p-next').onclick=()=>location.hash=PLAYERS[(idx+1)%PLAYERS.length].id;
+document.getElementById('p-prev').onclick=()=>location.hash=nb(-1).id;
+document.getElementById('p-next').onclick=()=>location.hash=nb(1).id;
 addEventListener('keydown',e=>{if(idx<0)return;if(e.key==='Escape')document.getElementById('pclose').click();if(e.key==='ArrowRight')document.getElementById('p-next').click();if(e.key==='ArrowLeft')document.getElementById('p-prev').click()});
 
 // ---- form (demo: no backend yet)
