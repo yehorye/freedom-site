@@ -241,6 +241,32 @@ section{position:relative}
 .log td{padding:8px 4px;border-bottom:1px solid var(--line)}.log td.w{color:#7fd17f}.log td.l{color:#e58a98}
 .ppg{color:var(--ink);font-weight:600}
 
+/* juniors eybl */
+.jhead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin:70px 0 18px;padding-top:40px;border-top:1px solid var(--line)}
+.jhead h3{font-family:var(--cond);font-weight:800;font-size:clamp(30px,4vw,54px);text-transform:uppercase;line-height:.95;margin-top:10px}
+#jlink{margin-top:16px}
+.psgap{height:26px}
+.fmail{margin-top:14px;font-size:12.5px;color:var(--mute)}.fmail a,.ok a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+/* partner */
+.fhc{padding:20px 0 90px}
+.fhbox{position:relative;overflow:hidden;border-radius:26px;border:1px solid rgba(61,139,61,.35);padding:60px;display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:center;
+  background:linear-gradient(135deg,#0d1a10,#0b0d0b 55%,#0f0a0c)}
+.fhglow{position:absolute;width:620px;height:620px;right:-180px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(61,139,61,.45),transparent 65%);filter:blur(10px);animation:fhg 8s ease-in-out infinite alternate;pointer-events:none}
+@keyframes fhg{to{transform:translate(-80px,60px) scale(1.1)}}
+.fhl,.fhr{position:relative}
+.fhmark{display:flex;align-items:center;gap:18px;margin:22px 0 26px}
+.fhf{width:78px;height:78px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#4caf50,#2e7d32);font-family:var(--cond);font-weight:900;font-size:54px;color:#fff;box-shadow:0 14px 40px -10px rgba(76,175,80,.7)}
+.fhmark b{display:block;font-family:var(--cond);font-weight:800;font-size:clamp(44px,5.4vw,78px);line-height:.85;letter-spacing:.02em}
+.fhmark small{display:block;font-size:12px;letter-spacing:.5em;color:#8fd18f;margin-top:8px}
+.fhtxt{color:#b9c2b9;line-height:1.75;font-size:15.5px;max-width:52ch;margin-bottom:26px}
+.fhbox .btn{background:#4caf50;border-color:#4caf50;color:#08110a}.fhbox .btn:hover{background:#fff;border-color:#fff;color:#08110a}
+.fhr{display:flex;flex-direction:column;gap:12px}
+.fhs{padding:22px 24px;border-radius:16px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);backdrop-filter:blur(6px);transition:border-color .4s,transform .4s}
+.fhs:hover{border-color:rgba(76,175,80,.5);transform:translateX(-4px)}
+.fhs b{display:block;font-family:var(--cond);font-weight:800;font-size:40px;line-height:1;color:#fff}
+.fhs small{display:block;margin-top:6px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+@media(max-width:860px){.fhbox{grid-template-columns:1fr;padding:30px;gap:30px;border-radius:18px}.fhf{width:60px;height:60px;font-size:40px;border-radius:14px}.fhmark b{font-size:13vw}.fhs b{font-size:32px}.fhbox .btn{width:100%;justify-content:center}}
+
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -278,6 +304,15 @@ section{position:relative}
 .clink em{font-style:normal;font-size:22px;transition:transform .4s}
 .clink:hover em{transform:translateX(6px) rotate(-45deg)}
 
+.uaflag{position:relative;display:block;width:46px;height:30px;border-radius:6px;overflow:hidden;
+  background:linear-gradient(180deg,#0057b7 50%,#ffd700 50%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 18px rgba(0,87,183,.55),0 0 26px rgba(255,215,0,.35);animation:flaglow 3s ease-in-out infinite}
+.uaflag::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.18),transparent 20%,rgba(255,255,255,.18) 40%,transparent 60%,rgba(0,0,0,.15) 80%,transparent);
+  background-size:200% 100%;animation:flagwave 3.2s linear infinite}
+.uaflag span{position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);transform:translateX(-120%);animation:flagshine 3.5s ease-in-out infinite}
+@keyframes flagshine{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+@keyframes flagwave{to{background-position:-200% 0}}
+@keyframes flaglow{50%{box-shadow:0 0 0 1px rgba(255,255,255,.18),0 0 26px rgba(0,87,183,.8),0 0 36px rgba(255,215,0,.55)}}
 .chip.cta{transition:all .35s}.chip.cta:hover{background:var(--wine2);color:#fff;border-color:var(--wine2)}
 .hcta{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:15px 24px;border-radius:40px;background:var(--ink);color:var(--bg);transition:all .35s;border:1px solid var(--ink)}
@@ -326,7 +361,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 .mmenu ul a small{font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.2em;color:#d99aa4}
 .mfoot a{color:var(--ink)}
 .mfoot{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
-@media(max-width:860px){.burger{display:block}nav .chip{display:none}}
+@media(max-width:860px){.burger{display:block}nav .chip{display:none}nav .wrap{gap:0}.uaflag{margin-left:auto;width:38px;height:25px}}
 
 @media(max-width:760px){
   .wrap{width:90vw}
@@ -479,9 +514,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <li><a href="#games">Games</a></li>
       <li><a href="#staff">Staff</a></li>
       <li><a href="#team">Team</a></li>
+      <li><a href="#partner">Partner</a></li>
       <li><a href="#apply">Contact</a></li>
     </ul>
-    <a href="#apply" class="chip cta">Apply</a>
+    <a href="#apply" class="uaflag" aria-label="Ukraine"><span></span></a>
     <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
   </div>
 </nav>
@@ -491,7 +527,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <li><a href="#games"><small>02</small>Games</a></li>
     <li><a href="#staff"><small>03</small>Staff</a></li>
     <li><a href="#team"><small>04</small>Team</a></li>
-    <li><a href="#apply"><small>05</small>Contact</a></li>
+    <li><a href="#partner"><small>05</small>Partner</a></li>
+    <li><a href="#apply"><small>06</small>Contact</a></li>
   </ul>
   <div class="mfoot"><span>Believe · Train · Succeed</span><a href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener">Instagram ↗</a></div>
 </div>
@@ -554,6 +591,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <div class="results" id="results"></div>
     <div class="glabel">Upcoming</div>
     <div class="upcoming" id="upcoming"></div>
+    <div class="jhead">
+      <div><p class="eyebrow">Juniors · <b>EYBL U16</b></p><h3>European Youth Basketball League</h3></div>
+      <p class="gnote" id="jstage"></p>
+    </div>
+    <div class="results" id="jresults"></div>
+    <a class="slink" id="jlink" target="_blank" rel="noopener">All EYBL games on eybl.tv ↗</a>
   </div>
 </section>
 
@@ -588,17 +631,36 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   <span class="w">SUCCEED<span class="fill">SUCCEED</span></span>
 </section>
 
+<section class="fhc" id="partner">
+  <div class="wrap">
+    <div class="fhbox">
+      <div class="fhglow"></div>
+      <div class="fhl">
+        <p class="eyebrow">Official partner</p>
+        <div class="fhmark"><span class="fhf">F</span><div><b>FREEDOM</b><small>HOLDING CORP.</small></div></div>
+        <p class="fhtxt">Freedom Holding Corp. is the official partner and sponsor of Freedom UA Basketball Academy — supporting young Ukrainian players on their way to international basketball.</p>
+        <a class="btn" href="https://freedomholdingcorp.com" target="_blank" rel="noopener">Visit freedomholdingcorp.com <em>→</em></a>
+      </div>
+      <div class="fhr">
+        <div class="fhs"><b>Nasdaq</b><small>Listed company · FRHC</small></div>
+        <div class="fhs"><b>22</b><small>Countries of presence</small></div>
+        <div class="fhs"><b>Sport</b><small>Supports sports, education &amp; culture</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="partner" id="contact">
   <div class="wrap">
     <div class="pbox">
       <div>
-        <p class="eyebrow">Official sponsor</p>
-        <h3 style="margin-top:14px">Powered by<br><b>Freedom</b> Holding Corp.</h3>
-        <p>Freedom UA Basketball Academy competes in Ukrainian leagues and international tournaments.</p>
+        <p class="eyebrow">Contact</p>
+        <h3 style="margin-top:14px">Talk to the<br><b>academy</b></h3>
+        <p>For tryouts, scouting requests and partnerships, write to the General Manager directly.</p>
       </div>
       <div class="clinks">
+        <a class="clink" href="mailto:Vlad.volzhyn@gmail.com"><div><small>Email · General Manager</small><span>Vlad.volzhyn@gmail.com</span></div><em>→</em></a>
         <a class="clink" href="https://www.instagram.com/freedom_basketball_ua/" target="_blank" rel="noopener"><div><small>Instagram</small><span>@freedom_basketball_ua</span></div><em>→</em></a>
-        <a class="clink" href="#roster"><div><small>Scouts &amp; coaches</small><span>Browse player profiles</span></div><em>→</em></a>
       </div>
     </div>
   </div>
@@ -621,7 +683,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
         <label class="wide"><span>Message</span><textarea name="msg" rows="3" placeholder="Tell us a bit about yourself"></textarea></label>
       </div>
       <button class="btn big" type="submit">Send request <em>→</em></button>
-      <div class="ok" id="ok"><b>Request sent.</b> The academy will contact you shortly.</div>
+      <p class="fmail">Requests go to the General Manager · <a href="mailto:Vlad.volzhyn@gmail.com">Vlad.volzhyn@gmail.com</a></p>
+      <div class="ok" id="ok"><b>Almost done.</b> Your email app opened with the request — just press send. Or write directly to <a href="mailto:Vlad.volzhyn@gmail.com">Vlad.volzhyn@gmail.com</a>.</div>
     </form>
   </div>
 </section>
@@ -653,6 +716,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 </div>
 
 <script src="games.js"></script>
+<script src="eybl.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -693,6 +757,7 @@ PLAYERS.forEach(p=>p.t=p.t||'a');
 const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "horb", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-sokolov", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "vakulenko"]);
 const src=id=>CUT.has(id)?`img/${id}.png`:`img/${id}.jpg`;
 const GD=window.FUA_GAMES||{games:[],upcoming:[],standings:[]};
+const ED=window.FUA_EYBL||{games:[]};
 
 const cm=h=>{const[f,i]=h.split("'").map(Number);return Math.round((f*12+i)*2.54)};
 const kg=l=>Math.round(l*0.4536);
@@ -768,12 +833,14 @@ function openP(i){
     <div><small>Born</small><b>${p.born}</b></div>
     <div><small>Height</small><b>${p.h}"<i>${cm(p.h)} cm</i></b></div>
     <div><small>Weight</small><b>${p.w}<i>lbs · ${kg(p.w)} kg</i></b></div>`;
-  const S=seasonStats(p.id),ps=document.getElementById('p-season');
-  ps.style.display=S?'':'none';
-  if(S)ps.innerHTML=`<div class="pslab">Season 2026/27 · Higher League · ${S.n} games</div>
+  const ps=document.getElementById('p-season');
+  const block=(S,lab)=>`<div class="pslab">${lab} · ${S.n} games</div>
     <div class="psg">${[['PTS',S.ppg],['REB',S.rpg],['AST',S.apg],['STL',S.spg],['EFF',S.eff]].map(([k,v])=>`<div><b>${v}</b><small>${k}</small></div>`).join('')}</div>
     <table class="log"><tr><th>Date</th><th>Opp</th><th>Res</th><th>MIN</th><th>PTS</th><th>REB</th><th>AST</th><th>STL</th></tr>
-    ${S.L.map(({g,l})=>`<tr><td>${fmtD(g.date)}</td><td>${g.home?'vs':'@'} ${g.oppFull.split(' (')[0].split('-')[0]}</td><td class="${g.win?'w':'l'}">${g.win?'W':'L'} ${g.us}-${g.them}</td><td>${l.min.split(':')[0]}</td><td>${l.pts}</td><td>${l.reb}</td><td>${l.ast}</td><td>${l.stl}</td></tr>`).join('')}</table>`;
+    ${S.L.map(({g,l})=>`<tr><td>${fmtD(g.date)}</td><td>${g.home||g.neutral?'vs':'@'} ${g.oppFull.split(' (')[0].split('-')[0].replace('Basketball Academy','BA').replace('BC ','')}</td><td class="${g.win?'w':'l'}">${g.win?'W':'L'} ${g.us}-${g.them}</td><td>${l.min.split(':')[0]}</td><td>${l.pts}</td><td>${l.reb}</td><td>${l.ast}</td><td>${l.stl}</td></tr>`).join('')}</table>`;
+  const SA=seasonStats(p.id,GD),SE=seasonStats(p.id,ED);
+  ps.innerHTML=(SA?block(SA,'Season 2026/27 · Higher League'):'')+(SE?`<div class="psgap"></div>`+block(SE,'EYBL U16 · Ploiești stage'):'');
+  ps.style.display=(SA||SE)?'':'none';
   const id=ytId(p.highlights),hl=document.getElementById('p-hl'),v=document.getElementById('p-video');
   hl.classList.toggle('soon',!id);v.style.display='none';
   document.getElementById('p-hltext').textContent=id?'Watch game highlights':'Highlight reel coming soon';
@@ -800,7 +867,11 @@ const seg=document.querySelectorAll('#seg button');let kind='Tryout';
 seg.forEach(b=>b.onclick=()=>{seg.forEach(x=>x.classList.remove('on'));b.classList.add('on');kind=b.dataset.v;document.querySelector('.opt').style.display=kind==='Tryout'?'':'none'});
 document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();const f=e.target;let bad=false;
   f.querySelectorAll('[required]').forEach(i=>{const x=!i.value.trim();i.parentNode.classList.toggle('err',x);bad=bad||x});
-  if(bad)return;const ok=document.getElementById('ok');ok.classList.add('on');gsap.fromTo(ok,{opacity:0,y:10},{opacity:1,y:0,duration:.6});f.reset()});
+  if(bad)return;
+  const v=n=>(f.elements[n]&&f.elements[n].value||'').trim();
+  const body=`Request type: ${kind}\nName: ${v('name')}\nContact: ${v('contact')}`+(kind==='Tryout'?`\nBirth year & position: ${v('extra')}`:'')+`\n\n${v('msg')}`;
+  const a=document.createElement('a');a.href='mailto:Vlad.volzhyn@gmail.com?subject='+encodeURIComponent('Freedom UA — '+kind+' request: '+v('name'))+'&body='+encodeURIComponent(body);a.click();
+  const ok=document.getElementById('ok');ok.classList.add('on');gsap.fromTo(ok,{opacity:0,y:10},{opacity:1,y:0,duration:.6});f.reset()});
 
 // ---- games
 const fmtD=d=>new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short'}).toUpperCase();
@@ -819,17 +890,20 @@ const byId=Object.fromEntries(PLAYERS.map(p=>[p.id,p]));
     tick();setInterval(tick,1000);
   }
   document.getElementById('stand').innerHTML=`<div class="nlab">Standings</div><table>${GD.standings.map((r,i)=>`<tr class="${r[0]==='Freedom UA'?'me':''}"><td>${i+1}</td><td>${r[0]}</td><td>${r[2]}–${r[3]}</td></tr>`).join('')}</table><a class="slink" href="${GD.standingsUrl}" target="_blank" rel="noopener">Full table on FBU ↗</a>`;
-  document.getElementById('results').innerHTML=[...GD.games].reverse().map(g=>{const tp=byId[g.top[0]];return `
+  const resHTML=g=>{const tp=byId[g.top[0]];return `
     <div class="res ${g.win?'w':'l'}">
-      <div class="rdate">${fmtD(g.date)}<small>${g.home?'Home':'Away'}</small></div>
-      <div class="rteams"><span class="rbadge">${g.win?'W':'L'}</span><b>${g.us} : ${g.them}</b><span>${g.home?'vs':'@'} ${g.oppFull}</span></div>
+      <div class="rdate">${fmtD(g.date)}<small>${g.neutral?'Neutral':g.home?'Home':'Away'}</small></div>
+      <div class="rteams"><span class="rbadge">${g.win?'W':'L'}</span><b>${g.us} : ${g.them}</b><span>${g.home||g.neutral?'vs':'@'} ${g.oppFull}</span></div>
       <div class="rtop">Top scorer<b>${tp?tp.first[0]+'. '+tp.last:''} · ${g.top[1]} pts</b></div>
       <div class="rbtn"><a href="${g.box}" target="_blank" rel="noopener">Box score</a><a href="${g.video}" target="_blank" rel="noopener">Video</a></div>
-    </div>`}).join('');
+    </div>`};
+  document.getElementById('results').innerHTML=[...GD.games].reverse().map(resHTML).join('');
+  document.getElementById('jresults').innerHTML=[...ED.games].reverse().map(resHTML).join('');
+  document.getElementById('jstage').textContent=ED.stage||'';document.getElementById('jlink').href=ED.teamUrl||'#';
   document.getElementById('upcoming').innerHTML=GD.upcoming.map(u=>`<div class="up"><b>${u.date?fmtD(u.date):'TBA'}</b><span>${u.home?'vs':'@'} ${u.oppFull}</span><small>${u.home?'Home':'Away'}</small></div>`).join('');
 })();
-function seasonStats(id){
-  const L=GD.games.map(g=>({g,l:g.lines[id]})).filter(x=>x.l);
+function seasonStats(id,D){D=D||GD;
+  const L=D.games.map(g=>({g,l:g.lines[id]})).filter(x=>x.l);
   if(!L.length)return null;
   const n=L.length,sum=k=>L.reduce((a,x)=>a+x.l[k],0),avg=k=>(sum(k)/n).toFixed(1);
   return {n,ppg:avg('pts'),rpg:avg('reb'),apg:avg('ast'),spg:avg('stl'),eff:avg('eff'),L};
@@ -858,6 +932,7 @@ document.querySelectorAll('.split').forEach(s=>gsap.from(s.querySelectorAll('.ln
 ScrollTrigger.batch('.card',{start:'top 92%',onEnter:b=>gsap.fromTo(b,{y:60,opacity:0,rotateX:-12},{y:0,opacity:1,rotateX:0,duration:1,stagger:.07,ease:'expo.out',clearProps:'transform'})});
 gsap.utils.toArray('.sc').forEach((s,i)=>gsap.from(s,{clipPath:'inset(100% 0 0 0)',duration:1.3,delay:i*.12,ease:'expo.inOut',scrollTrigger:{trigger:s,start:'top 85%'}}));
 gsap.utils.toArray('.mantra .fill').forEach(f=>gsap.to(f,{clipPath:'inset(0 0% 0 0)',ease:'none',scrollTrigger:{trigger:f.parentNode,start:'top 85%',end:'bottom 45%',scrub:true}}));
+gsap.from('.fhbox',{y:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.fhbox',start:'top 85%'}});
 gsap.from('.pbox',{y:60,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.pbox',start:'top 85%'}});
 
 addEventListener('load',()=>ScrollTrigger.refresh());
