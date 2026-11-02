@@ -639,12 +639,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <div class="results" id="results"></div>
     <div class="glabel">Upcoming</div>
     <div class="upcoming" id="upcoming"></div>
-    <div class="jhead">
-      <div><p class="eyebrow">Juniors · <b>EYBL U16</b></p><h3>European Youth Basketball League</h3></div>
-      <p class="gnote" id="jstage"></p>
-    </div>
-    <div class="results" id="jresults"></div>
-    <a class="slink" id="jlink" target="_blank" rel="noopener">All EYBL games on eybl.tv ↗</a>
   </div>
 </section>
 
@@ -944,9 +938,7 @@ const byId=Object.fromEntries(PLAYERS.map(p=>[p.id,p]));
       <div class="rbtn"><a href="${g.box}" target="_blank" rel="noopener">Box score</a><a href="${g.video}" target="_blank" rel="noopener">Video</a></div>
     </div>`};
   document.getElementById('results').innerHTML=[...GD.games].reverse().map(resHTML).join('');
-  document.getElementById('jresults').innerHTML=[...ED.games].reverse().map(resHTML).join('');
-  document.getElementById('jstage').textContent=ED.stage||'';
-  if(GD.updated)document.getElementById('gupd').textContent='Updated '+new Date(GD.updated+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'});document.getElementById('jlink').href=ED.teamUrl||'#';
+  if(GD.updated)document.getElementById('gupd').textContent='Updated '+new Date(GD.updated+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'});
   document.getElementById('upcoming').innerHTML=GD.upcoming.map(u=>`<div class="up"><b>${u.date?fmtD(u.date):'TBA'}</b><span>${u.home?'vs':'@'} ${u.oppFull}</span><small>${u.home?'Home':'Away'}</small></div>`).join('');
 })();
 function seasonStats(id,D){D=D||GD;
