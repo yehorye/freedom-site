@@ -319,6 +319,15 @@ section{position:relative}
 @media(max-width:980px){.abg .ab{flex-basis:calc((100% - 22px)/2)}}
 @media(max-width:760px){#abroad{padding:80px 0}.abg{gap:12px;margin-top:34px}.abg .ab{flex-basis:calc((100% - 12px)/2)}.ab{border-radius:14px}.ab .bd{padding:0 12px 14px;margin-top:-26px}.ab h3{font-size:19px}.ab h3 span{font-size:12px}.route{font-size:9px;gap:6px;margin:10px 0 8px;letter-spacing:.06em}.ab .tm{font-size:12px}.ab .tm small{font-size:10.5px}.ab .lv{font-size:8px;padding:4px 7px;margin-bottom:8px}.ab .tags span{font-size:8px;padding:3px 6px}.ab-count{gap:22px}.ab-count b{font-size:40px}}
 
+.abhl{display:flex;align-items:center;gap:10px;margin-top:14px;padding:10px 16px 10px 12px;border-radius:99px;border:1px solid rgba(200,60,80,.55);background:rgba(142,34,50,.25);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff;transition:background .3s}
+.abhl:hover{background:rgba(142,34,50,.6)}
+.abhl i{width:22px;height:22px;border-radius:50%;background:#fff;position:relative;flex:none}
+.abhl i:after{content:"";position:absolute;left:8.5px;top:6px;border:5px solid transparent;border-left:7px solid #120a0d;border-right:0}
+.vmodal{position:fixed;inset:0;z-index:120;background:rgba(5,4,5,.94);display:none;align-items:center;justify-content:center;padding:20px}
+.vmodal.open{display:flex}
+.vmodal video{width:min(1100px,100%);max-height:85vh;border-radius:14px;background:#000}
+.vmodal .vx{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);color:#fff;font-size:22px;line-height:1}
+@media(max-width:760px){.abhl{font-size:8.5px;letter-spacing:.1em;padding:8px 10px 8px 8px;gap:7px;margin-top:10px}.abhl i{width:18px;height:18px}.abhl i:after{left:7px;top:4px}}
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -674,12 +683,14 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <article class="ab"><div class="ph"><img src="img/al-klyavin.webp" alt="Robert Klyavin" loading="lazy"></div><div class="bd"><span class="lv">Prep school · USA</span>
         <h3>Klyavin<span>Robert</span></h3><div class="route">Kyiv<i></i><em>Maryland, USA</em></div><div class="tm">Springdale Lions<small>Springdale Prep, Maryland</small></div><div class="tags"><span>NLA Academy</span><span class="nt">Ukraine NT · U18</span></div></div></article>
       <article class="ab"><div class="ph"><img src="img/al-koshelev.webp" alt="Yehor Koshelev" loading="lazy"></div><div class="bd"><span class="lv">Prep school · USA</span>
-        <h3>Koshelev<span>Yehor</span></h3><div class="route">Kyiv<i></i><em>Iowa, USA</em></div><div class="tm">Iowa United Basketball<small>Iowa, USA</small></div><div class="tags"><span>NLA Academy</span><span class="nt">Ukraine NT · U18</span></div></div></article>
+        <h3>Koshelev<span>Yehor</span></h3><div class="route">Kyiv<i></i><em>Iowa, USA</em></div><div class="tm">Iowa United Basketball<small>Iowa, USA</small></div><button class="abhl" data-video="img/hl-koshelev.mp4" data-poster="img/hl-koshelev.jpg"><i></i>Watch highlights</button><div class="tags"><span>NLA Academy</span><span class="nt">Ukraine NT · U18</span></div></div></article>
       <article class="ab"><div class="ph"><img src="img/al-volzhyn.webp" alt="Damir Volzhyn" loading="lazy"></div><div class="bd"><span class="lv">Prep school · USA</span>
         <h3>Volzhyn<span>Damir</span></h3><div class="route">Kyiv<i></i><em>Utah, USA</em></div><div class="tm">Wasatch Academy<small>Mount Pleasant, Utah</small></div></div></article>
     </div>
   </div>
 </section>
+
+<div class="vmodal" id="vmodal"><button class="vx" aria-label="Close">×</button><video controls playsinline preload="none"></video></div>
 
 <section id="staff">
   <div class="wrap">
@@ -990,6 +1001,12 @@ if(!LITE)gsap.from('.pbox',{y:60,opacity:0,duration:1,ease:'expo.out',scrollTrig
 
 addEventListener('load',()=>{if(!LITE)ScrollTrigger.refresh()});
 document.fonts&&document.fonts.ready.then(()=>ScrollTrigger.refresh());
+
+// ---- alumni highlights
+(()=>{const m=document.getElementById('vmodal'),v=m.querySelector('video');
+const close=()=>{v.pause();m.classList.remove('open');document.body.classList.remove('lock')};
+document.querySelectorAll('.abhl').forEach(b=>b.addEventListener('click',()=>{v.poster=b.dataset.poster||'';v.src=b.dataset.video;m.classList.add('open');document.body.classList.add('lock');v.play().catch(()=>{})}));
+m.querySelector('.vx').addEventListener('click',close);m.addEventListener('click',e=>{if(e.target===m)close()});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))close()})})();
 </script>
 </body>
 </html>
