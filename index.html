@@ -16,6 +16,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+@media(hover:none){html{scroll-behavior:auto}}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.lock{overflow:hidden}
 a{color:inherit;text-decoration:none}
@@ -964,6 +965,8 @@ const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.class
 
 // ---- intro + scroll animations
 gsap.registerPlugin(ScrollTrigger);
+const LITE=TOUCH||matchMedia('(max-width:760px)').matches;
+ScrollTrigger.config({ignoreMobileResize:true});
 const tl=gsap.timeline();
 tl.to('#loader .words span',{opacity:1,duration:.35,stagger:.3,ease:'none'})
   .to('#loader .bar i',{width:'100%',duration:1.1,ease:'power2.inOut'},0)
@@ -976,14 +979,14 @@ tl.to('#loader .words span',{opacity:1,duration:.35,stagger:.3,ease:'none'})
   .from('.facts>div',{opacity:0,y:14,duration:.6,stagger:.1},'<')
   .add(()=>{document.querySelectorAll('.cnt').forEach(el=>gsap.to({v:0},{v:+el.dataset.to,duration:1.4,ease:'power2.out',onUpdate(){el.textContent=Math.round(this.targets()[0].v)}}))},'<');
 
-document.querySelectorAll('.split').forEach(s=>gsap.from(s.querySelectorAll('.ln>span'),{yPercent:105,duration:1.1,stagger:.1,ease:'expo.out',scrollTrigger:{trigger:s,start:'top 85%'}}));
-ScrollTrigger.batch('.card',{start:'top 92%',onEnter:b=>gsap.fromTo(b,{y:60,opacity:0,rotateX:-12},{y:0,opacity:1,rotateX:0,duration:1,stagger:.07,ease:'expo.out',clearProps:'transform'})});
-gsap.utils.toArray('.sc').forEach((s,i)=>gsap.from(s,{clipPath:'inset(100% 0 0 0)',duration:1.3,delay:i*.12,ease:'expo.inOut',scrollTrigger:{trigger:s,start:'top 85%'}}));
+if(!LITE)document.querySelectorAll('.split').forEach(s=>gsap.from(s.querySelectorAll('.ln>span'),{yPercent:105,duration:1.1,stagger:.1,ease:'expo.out',scrollTrigger:{trigger:s,start:'top 85%'}}));
+if(!LITE)ScrollTrigger.batch('.card',{start:'top 92%',once:true,onEnter:b=>gsap.fromTo(b,{y:60,opacity:0,rotateX:-12},{y:0,opacity:1,rotateX:0,duration:1,stagger:.07,ease:'expo.out',clearProps:'all'})});
+if(!LITE)gsap.utils.toArray('.sc').forEach((s,i)=>gsap.from(s,{clipPath:'inset(100% 0 0 0)',duration:1.3,delay:i*.12,ease:'expo.inOut',scrollTrigger:{trigger:s,start:'top 85%'}}));
 gsap.utils.toArray('.mantra .fill').forEach(f=>gsap.to(f,{clipPath:'inset(0 0% 0 0)',ease:'none',scrollTrigger:{trigger:f.parentNode,start:'top 85%',end:'bottom 45%',scrub:true}}));
-gsap.from('.fhbox',{y:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.fhbox',start:'top 85%'}});
-gsap.from('.pbox',{y:60,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.pbox',start:'top 85%'}});
+if(!LITE)gsap.from('.fhbox',{y:60,opacity:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.fhbox',start:'top 85%'}});
+if(!LITE)gsap.from('.pbox',{y:60,opacity:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:'.pbox',start:'top 85%'}});
 
-addEventListener('load',()=>ScrollTrigger.refresh());
+addEventListener('load',()=>{if(!LITE)ScrollTrigger.refresh()});
 document.fonts&&document.fonts.ready.then(()=>ScrollTrigger.refresh());
 </script>
 </body>
