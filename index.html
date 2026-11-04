@@ -329,6 +329,28 @@ section{position:relative}
 .vmodal video{width:auto;max-width:min(1100px,100%);max-height:85vh;border-radius:14px;background:#000}
 .vmodal .vx{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);color:#fff;font-size:22px;line-height:1}
 @media(max-width:760px){.abhl{font-size:8.5px;letter-spacing:.1em;padding:8px 10px 8px 8px;gap:7px;margin-top:10px}.abhl i{width:18px;height:18px}.abhl i:after{left:7px;top:4px}}
+.navr{display:flex;align-items:center}
+.snd{display:flex;align-items:flex-end;justify-content:center;gap:3px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);margin-right:14px;padding-bottom:13px;transition:border-color .3s}
+.snd:hover{border-color:rgba(255,255,255,.35)}
+.snd i{display:block;width:3px;height:4px;border-radius:2px;background:#cfc6c8;transition:height .3s}
+.snd.on{border-color:rgba(200,60,80,.7)}
+.snd.on i{background:#fff;animation:eq .9s ease-in-out infinite}
+.snd.on i:nth-child(2){animation-delay:-.3s}.snd.on i:nth-child(3){animation-delay:-.6s}.snd.on i:nth-child(4){animation-delay:-.15s}
+@keyframes eq{0%,100%{height:4px}50%{height:15px}}
+@media(max-width:860px){.navr{margin-left:auto}.snd{width:38px;height:38px;margin-right:10px;padding-bottom:11px}.navr .uaflag{margin-left:0}}
+/* ---------- playlist ---------- */
+.playlist{padding:110px 0}
+.pl{border-top:1px solid var(--line)}
+.pl-row{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:20px;padding:20px 6px;border-bottom:1px solid var(--line);transition:background .3s}
+.pl-row:hover{background:rgba(142,34,50,.12)}
+.pl-n{font-family:var(--cond);font-weight:700;font-size:26px;color:rgba(200,60,80,.85)}
+.pl-t b{display:block;font-family:var(--cond);font-weight:800;font-size:26px;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+.pl-t small{display:block;margin-top:7px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.pl-l{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.pl-l a{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;padding:9px 14px;border-radius:99px;border:1px solid var(--line);color:#e6dfe1;transition:background .3s,border-color .3s}
+.pl-l a:hover{background:#fff;color:#0b090a;border-color:#fff}
+.pl-labels{margin-top:22px;font-size:12px;color:var(--mute);line-height:1.7}.pl-labels a{color:#e6dfe1;border-bottom:1px solid var(--line)}
+@media(max-width:760px){.playlist{padding:80px 0}.pl-row{grid-template-columns:36px 1fr;gap:12px;padding:16px 2px}.pl-n{font-size:20px}.pl-t b{font-size:19px}.pl-t small{font-size:9px;letter-spacing:.08em}.pl-l{grid-column:2;justify-content:flex-start;gap:6px}.pl-l a{font-size:9px;padding:7px 10px;letter-spacing:.1em}}
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -583,7 +605,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <li><a href="#partner">Partner</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="uaflag" aria-label="Ukraine"><span></span></a>
+    <div class="navr"><a href="#contact" class="uaflag" aria-label="Ukraine"><span></span></a></div>
     <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
   </div>
 </nav>
@@ -715,6 +737,29 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <div class="shead"><div><p class="eyebrow">Season 2026/27</p>
       <h2 class="split"><span class="ln"><span>ONE</span></span><span class="ln"><span><em>TEAM</em></span></span></h2></div></div>
     <div class="tframe"><img src="img/team.webp" alt="Freedom UA team photo" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="playlist" id="playlist">
+  <div class="wrap">
+    <div class="shead"><div><p class="eyebrow">Locker room · Game day soundtrack</p>
+      <h2 class="split"><span class="ln"><span>TEAM</span></span><span class="ln"><span><em>PLAYLIST</em></span></span></h2></div>
+      <p class="ab-sub">What the team plays before tip-off. Listen on the official streaming platforms.</p></div>
+    <div class="pl">
+      <div class="pl-row"><span class="pl-n">01</span><div class="pl-t"><b>Roc Boys (And the Winner Is)…</b><small>JAY-Z · American Gangster · 2007 · Roc-A-Fella · Def Jam</small></div>
+        <div class="pl-l"><a href="https://open.spotify.com/search/Jay-Z%20Roc%20Boys%20%28And%20the%20Winner%20Is%29" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/search?term=Jay-Z%20Roc%20Boys%20%28And%20the%20Winner%20Is%29" target="_blank" rel="noopener">Apple Music</a><a href="https://music.youtube.com/search?q=Jay-Z%20Roc%20Boys%20%28And%20the%20Winner%20Is%29" target="_blank" rel="noopener">YouTube</a></div></div>
+      <div class="pl-row"><span class="pl-n">02</span><div class="pl-t"><b>Empire State of Mind</b><small>JAY-Z · The Blueprint 3 · 2009 · Roc Nation</small></div>
+        <div class="pl-l"><a href="https://open.spotify.com/search/Jay-Z%20Empire%20State%20of%20Mind" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/search?term=Jay-Z%20Empire%20State%20of%20Mind" target="_blank" rel="noopener">Apple Music</a><a href="https://music.youtube.com/search?q=Jay-Z%20Empire%20State%20of%20Mind" target="_blank" rel="noopener">YouTube</a></div></div>
+      <div class="pl-row"><span class="pl-n">03</span><div class="pl-t"><b>Run This Town</b><small>JAY-Z · The Blueprint 3 · 2009 · Roc Nation</small></div>
+        <div class="pl-l"><a href="https://open.spotify.com/search/Jay-Z%20Run%20This%20Town" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/search?term=Jay-Z%20Run%20This%20Town" target="_blank" rel="noopener">Apple Music</a><a href="https://music.youtube.com/search?q=Jay-Z%20Run%20This%20Town" target="_blank" rel="noopener">YouTube</a></div></div>
+      <div class="pl-row"><span class="pl-n">04</span><div class="pl-t"><b>Encore</b><small>JAY-Z · The Black Album · 2003 · Roc-A-Fella · Def Jam</small></div>
+        <div class="pl-l"><a href="https://open.spotify.com/search/Jay-Z%20Encore" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/search?term=Jay-Z%20Encore" target="_blank" rel="noopener">Apple Music</a><a href="https://music.youtube.com/search?q=Jay-Z%20Encore" target="_blank" rel="noopener">YouTube</a></div></div>
+      <div class="pl-row"><span class="pl-n">05</span><div class="pl-t"><b>Public Service Announcement</b><small>JAY-Z · The Black Album · 2003 · Roc-A-Fella · Def Jam</small></div>
+        <div class="pl-l"><a href="https://open.spotify.com/search/Jay-Z%20Public%20Service%20Announcement" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/search?term=Jay-Z%20Public%20Service%20Announcement" target="_blank" rel="noopener">Apple Music</a><a href="https://music.youtube.com/search?q=Jay-Z%20Public%20Service%20Announcement" target="_blank" rel="noopener">YouTube</a></div></div>
+      <div class="pl-row"><span class="pl-n">06</span><div class="pl-t"><b>99 Problems</b><small>JAY-Z · The Black Album · 2003 · Roc-A-Fella · Def Jam</small></div>
+        <div class="pl-l"><a href="https://open.spotify.com/search/Jay-Z%2099%20Problems" target="_blank" rel="noopener">Spotify</a><a href="https://music.apple.com/search?term=Jay-Z%2099%20Problems" target="_blank" rel="noopener">Apple Music</a><a href="https://music.youtube.com/search?q=Jay-Z%2099%20Problems" target="_blank" rel="noopener">YouTube</a></div></div>
+    </div>
+    <p class="pl-labels">Music by JAY-Z. Released by <a href="https://www.defjam.com" target="_blank" rel="noopener">Def Jam Recordings</a> / Roc-A-Fella Records and <a href="https://rocnation.com" target="_blank" rel="noopener">Roc Nation</a>. All rights belong to their respective owners.</p>
   </div>
 </section>
 
@@ -1008,6 +1053,7 @@ document.fonts&&document.fonts.ready.then(()=>ScrollTrigger.refresh());
 const close=()=>{v.pause();m.classList.remove('open');document.body.classList.remove('lock')};
 document.querySelectorAll('.abhl').forEach(b=>b.addEventListener('click',()=>{v.poster=b.dataset.poster||'';v.src=b.dataset.video;m.classList.add('open');document.body.classList.add('lock');v.play().catch(()=>{})}));
 m.querySelector('.vx').addEventListener('click',close);m.addEventListener('click',e=>{if(e.target===m)close()});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))close()})})();
+
 </script>
 </body>
 </html>
