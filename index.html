@@ -351,6 +351,15 @@ section{position:relative}
 .pl-l a:hover{background:#fff;color:#0b090a;border-color:#fff}
 .pl-labels{margin-top:22px;font-size:12px;color:var(--mute);line-height:1.7}.pl-labels a{color:#e6dfe1;border-bottom:1px solid var(--line)}
 @media(max-width:760px){.playlist{padding:80px 0}.pl-row{grid-template-columns:36px 1fr;gap:12px;padding:16px 2px}.pl-n{font-size:20px}.pl-t b{font-size:19px}.pl-t small{font-size:9px;letter-spacing:.08em}.pl-l{grid-column:2;justify-content:flex-start;gap:6px}.pl-l a{font-size:9px;padding:7px 10px;letter-spacing:.1em}}
+.mplayer{position:fixed;right:22px;bottom:22px;z-index:70;width:340px;border-radius:16px;overflow:hidden;background:#0d0a0b;border:1px solid rgba(200,60,80,.45);box-shadow:0 24px 60px -20px rgba(0,0,0,.9);transform:translateY(130%);opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.mplayer.open{transform:none;opacity:1;pointer-events:auto}
+.mplayer .mph{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 14px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:#e6dfe1}
+.mplayer .mph b{font-weight:500}.mplayer .mph b i{font-style:normal;color:rgba(220,70,90,1)}
+.mplayer .mpx{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);color:#fff;font-size:15px;line-height:1}
+.mplayer .mpv{aspect-ratio:16/9;background:#000}.mplayer .mpv iframe,.mplayer .mpv>div{width:100%;height:100%;display:block;border:0}
+.snd i:nth-child(2){height:9px}.snd i:nth-child(3){height:6px}.snd i:nth-child(4){height:11px}
+.snd.on{background:rgba(142,34,50,.3)}
+@media(max-width:760px){.mplayer{right:10px;bottom:10px;width:min(270px,calc(100% - 20px))}}
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -605,7 +614,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
       <li><a href="#partner">Partner</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <div class="navr"><a href="#contact" class="uaflag" aria-label="Ukraine"><span></span></a></div>
+    <div class="navr"><button class="snd" id="snd" aria-label="Team playlist"><i></i><i></i><i></i><i></i></button><a href="#contact" class="uaflag" aria-label="Ukraine"><span></span></a></div>
     <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
   </div>
 </nav>
@@ -713,6 +722,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   </div>
 </section>
 
+<div class="mplayer" id="mplayer"><div class="mph"><b><i>●</i> Freedom UA · Locker room</b><button class="mpx" id="mpx" aria-label="Close">×</button></div><div class="mpv"><div id="ytp"></div></div></div>
 <div class="vmodal" id="vmodal"><button class="vx" aria-label="Close">×</button><video controls playsinline preload="none"></video></div>
 
 <section id="staff">
@@ -1031,6 +1041,17 @@ const close=()=>{v.pause();m.classList.remove('open');document.body.classList.re
 document.querySelectorAll('.abhl').forEach(b=>b.addEventListener('click',()=>{v.poster=b.dataset.poster||'';v.src=b.dataset.video;m.classList.add('open');document.body.classList.add('lock');v.play().catch(()=>{})}));
 m.querySelector('.vx').addEventListener('click',close);m.addEventListener('click',e=>{if(e.target===m)close()});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))close()})})();
 
+
+// ---- team playlist (YouTube)
+(()=>{const LIST='PLZIbmYDb6kPE';const b=document.getElementById('snd'),m=document.getElementById('mplayer');if(!b||!m)return;
+let pl=null,ready=false,want=false;const set=on=>b.classList.toggle('on',on);
+const make=()=>{pl=new YT.Player('ytp',{width:'100%',height:'100%',playerVars:{listType:'playlist',list:LIST,autoplay:1,playsinline:1,rel:0,modestbranding:1},events:{onReady:e=>{ready=true;if(want)e.target.playVideo()},onStateChange:e=>set(e.data===1||e.data===3)}})};
+const load=()=>{if(window.YT&&YT.Player){make();return}window.onYouTubeIframeAPIReady=make;const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t)};
+const open=()=>{m.classList.add('open');want=true;if(!pl)load();else if(ready)pl.playVideo()};
+const close=()=>{m.classList.remove('open');want=false;if(ready)pl.pauseVideo();set(false)};
+b.addEventListener('click',()=>m.classList.contains('open')?close():open());
+document.getElementById('mpx').addEventListener('click',close);
+document.querySelectorAll('.abhl').forEach(x=>x.addEventListener('click',()=>{if(ready)pl.pauseVideo()}));})();
 </script>
 </body>
 </html>
