@@ -353,18 +353,13 @@ section{position:relative}
 @media(max-width:760px){.playlist{padding:80px 0}.pl-row{grid-template-columns:36px 1fr;gap:12px;padding:16px 2px}.pl-n{font-size:20px}.pl-t b{font-size:19px}.pl-t small{font-size:9px;letter-spacing:.08em}.pl-l{grid-column:2;justify-content:flex-start;gap:6px}.pl-l a{font-size:9px;padding:7px 10px;letter-spacing:.1em}}
 .snd i:nth-child(2){height:9px}.snd i:nth-child(3){height:6px}.snd i:nth-child(4){height:11px}
 .snd.on{background:rgba(142,34,50,.3)}
-.mplayer{position:fixed;right:22px;bottom:22px;z-index:70;display:flex;align-items:stretch;border-radius:16px;overflow:hidden;background:#0d0a0b;border:1px solid rgba(200,60,80,.45);box-shadow:0 24px 60px -20px rgba(0,0,0,.9);transform:translateY(130%);opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
+.mplayer{position:fixed;right:22px;bottom:22px;z-index:70;width:380px;border-radius:16px;overflow:hidden;background:#0d0a0b;border:1px solid rgba(200,60,80,.45);box-shadow:0 24px 60px -20px rgba(0,0,0,.9);transform:translateY(130%);opacity:0;pointer-events:none;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .4s}
 .mplayer.open{transform:none;opacity:1;pointer-events:auto}
-.mplayer .mpv{width:200px;height:200px;flex:none;background:#000}.mplayer .mpv iframe,.mplayer .mpv>div{width:200px;height:200px;display:block;border:0}
-.mplayer .mpc{width:170px;padding:16px 14px 14px;display:flex;flex-direction:column;justify-content:space-between}
-.mplayer .mpt small{display:block;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}.mplayer .mpt small i{font-style:normal;color:rgba(220,70,90,1)}
-.mplayer .mpt b{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;margin-top:8px;font-size:13px;font-weight:500;line-height:1.35;color:#fff}
-.mplayer .mpb{display:flex;align-items:center;justify-content:space-between}
-.mplayer .mpb button{width:34px;height:34px;border-radius:50%;color:#e6dfe1;font-size:13px;display:grid;place-items:center}
-.mplayer .mpb button:hover{color:#fff;background:rgba(255,255,255,.08)}
-.mplayer .mpb .pp{width:46px;height:46px;background:#fff;color:#0b090a;font-size:15px}.mplayer .mpb .pp:hover{background:#fff;color:#0b090a}
-.mplayer .mpx{position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;color:#cfc6c8;font-size:15px;line-height:1}
-@media(max-width:760px){.mplayer{right:8px;left:8px;bottom:8px}.mplayer .mpc{flex:1;width:auto}}
+.mplayer .mph{display:flex;align-items:center;justify-content:space-between;padding:8px 10px 8px 14px}
+.mplayer .mph small{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:#e6dfe1}.mplayer .mph small i{font-style:normal;color:rgba(220,70,90,1)}
+.mplayer .mpx{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);color:#fff;font-size:15px;line-height:1}
+.mplayer .mpv{padding:0 8px 8px}.mplayer .mpv iframe{display:block;width:100%;height:152px;border:0;border-radius:12px}
+@media(max-width:760px){.mplayer{right:8px;left:8px;bottom:8px;width:auto}}
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -727,7 +722,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
   </div>
 </section>
 
-<div class="mplayer" id="mplayer"><div class="mpv"><div id="ytp"></div></div><div class="mpc"><div class="mpt"><small><i>●</i> Locker room</small><b id="mptitle">Freedom UA playlist</b></div><div class="mpb"><button id="mpprev" aria-label="Previous">&#9198;</button><button id="mpplay" class="pp" aria-label="Play/Pause">&#9654;</button><button id="mpnext" aria-label="Next">&#9197;</button></div></div><button class="mpx" id="mpx" aria-label="Close">×</button></div>
+<div class="mplayer" id="mplayer"><div class="mph"><small><i>●</i> Locker room playlist</small><button class="mpx" id="mpx" aria-label="Close">×</button></div><div class="mpv"><div id="spp"></div></div></div>
 <div class="vmodal" id="vmodal"><button class="vx" aria-label="Close">×</button><video controls playsinline preload="none"></video></div>
 
 <section id="staff">
@@ -1047,20 +1042,18 @@ document.querySelectorAll('.abhl').forEach(b=>b.addEventListener('click',()=>{v.
 m.querySelector('.vx').addEventListener('click',close);m.addEventListener('click',e=>{if(e.target===m)close()});addEventListener('keydown',e=>{if(e.key==='Escape'&&m.classList.contains('open'))close()})})();
 
 
-// ---- team playlist (YouTube, compact)
-(()=>{const LIST='PLZIbmYDb6kPE';const b=document.getElementById('snd'),m=document.getElementById('mplayer');if(!b||!m)return;
-const $=id=>document.getElementById(id),pp=$('mpplay'),tt=$('mptitle');let pl=null,ready=false,want=false;
-const set=on=>{b.classList.toggle('on',on);pp.innerHTML=on?'&#10074;&#10074;':'&#9654;'};
-const title=()=>{try{const d=pl.getVideoData();if(d&&d.title)tt.textContent=d.title}catch(e){}};
-const make=()=>{pl=new YT.Player('ytp',{width:200,height:200,playerVars:{listType:'playlist',list:LIST,autoplay:1,playsinline:1,rel:0,controls:0,modestbranding:1,disablekb:1},events:{onReady:e=>{ready=true;if(want)e.target.playVideo();title()},onStateChange:e=>{set(e.data===1||e.data===3);title()},onError:()=>{tt.textContent='Playlist unavailable'}}})};
-const load=()=>{if(window.YT&&YT.Player){make();return}window.onYouTubeIframeAPIReady=make;const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t)};
-const open=()=>{m.classList.add('open');want=true;if(!pl)load();else if(ready)pl.playVideo()};
-const close=()=>{m.classList.remove('open');want=false;if(ready)pl.pauseVideo();set(false)};
+// ---- team playlist (Spotify)
+(()=>{const URI='spotify:playlist:0Ha8eUZ0daNYKzU7Y4iFPg';const b=document.getElementById('snd'),m=document.getElementById('mplayer');if(!b||!m)return;
+let ctl=null,want=false,playing=false;const set=on=>b.classList.toggle('on',on);
+const make=api=>api.createController(document.getElementById('spp'),{uri:URI,width:'100%',height:152,theme:'dark'},c=>{ctl=c;
+  c.addListener('playback_update',e=>{playing=!e.data.isPaused;set(playing&&m.classList.contains('open'))});
+  c.addListener('ready',()=>{if(want)c.play()})});
+const load=()=>{window.onSpotifyIframeApiReady=make;const t=document.createElement('script');t.src='https://open.spotify.com/embed/iframe-api/v1';t.async=true;document.head.appendChild(t)};
+const open=()=>{m.classList.add('open');want=true;if(!ctl&&!window.__spl){window.__spl=1;load()}else if(ctl)ctl.resume()};
+const close=()=>{m.classList.remove('open');want=false;if(ctl)ctl.pause();set(false)};
 b.addEventListener('click',()=>m.classList.contains('open')?close():open());
-$('mpx').addEventListener('click',close);
-pp.addEventListener('click',()=>{if(!ready)return;pl.getPlayerState()===1?pl.pauseVideo():pl.playVideo()});
-$('mpnext').addEventListener('click',()=>{if(ready)pl.nextVideo()});$('mpprev').addEventListener('click',()=>{if(ready)pl.previousVideo()});
-document.querySelectorAll('.abhl').forEach(x=>x.addEventListener('click',()=>{if(ready)pl.pauseVideo()}));})();
+document.getElementById('mpx').addEventListener('click',close);
+document.querySelectorAll('.abhl').forEach(x=>x.addEventListener('click',()=>{if(ctl)ctl.pause()}));})();
 </script>
 </body>
 </html>
