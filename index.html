@@ -165,6 +165,11 @@ section{position:relative}
 #profile.open{display:block}
 #profile .pclose{position:fixed;top:22px;right:28px;z-index:3;width:50px;height:50px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:rgba(9,8,10,.6);backdrop-filter:blur(8px);transition:transform .4s}
 #profile .pclose:hover{transform:rotate(90deg)}
+#profile .pshare{position:fixed;top:22px;right:92px;z-index:3;width:50px;height:50px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:rgba(9,8,10,.6);backdrop-filter:blur(8px);transition:background .3s,border-color .3s}
+#profile .pshare:hover{background:var(--wine);border-color:var(--wine2)}
+#profile .pshare svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#profile .pshare-t{position:fixed;top:82px;right:28px;z-index:3;padding:8px 14px;border-radius:99px;background:rgba(9,8,10,.85);border:1px solid var(--line);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(-6px);transition:.3s;pointer-events:none}
+#profile .pshare-t.on{opacity:1;transform:none}
 #profile .pclose::before,#profile .pclose::after{content:"";position:absolute;width:18px;height:1.5px;background:#fff;transform:rotate(45deg)}
 #profile .pclose::after{transform:rotate(-45deg)}
 .pf{display:grid;grid-template-columns:1.05fr 1fr;min-height:100vh}
@@ -557,6 +562,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
   /* profile */
   #profile .pclose{top:14px;right:14px;width:44px;height:44px}
+  #profile .pshare{top:14px;right:66px;width:44px;height:44px}
+  #profile .pshare-t{top:66px;right:14px}
   .pf{display:block;min-height:0}
   .pf-photo{min-height:0;height:62vw;max-height:420px}
   .pf-photo img,.pf-photo img.cut{height:100%}
@@ -811,6 +818,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
 <!-- player profile -->
 <div id="profile" aria-modal="true" role="dialog">
+  <button class="pshare" id="pshare" aria-label="Share profile"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button><div class="pshare-t" id="pshare-t">Link copied</div>
   <button class="pclose" id="pclose" aria-label="Close"></button>
   <div class="pf">
     <div class="pf-photo"><div class="bignum" id="p-num"></div><img id="p-img" alt=""></div>
@@ -980,6 +988,11 @@ function openP(i){
 function closeP(){gsap.to(pr,{clipPath:'inset(0 0 100% 0)',duration:.6,ease:'expo.inOut',onComplete:()=>{pr.classList.remove('open');document.body.classList.remove('lock');idx=-1}})}
 function route(){const h=location.hash.slice(1);const i=PLAYERS.findIndex(p=>p.id===h);if(i>=0)openP(i);else if(pr.classList.contains('open'))closeP()}
 addEventListener('hashchange',route);
+document.getElementById('pshare').onclick=async()=>{
+  const p=PLAYERS[idx],url=location.origin+'/players/'+p.id+'/',title=p.first+' '+p.last+' · #'+p.n+' · Freedom UA Basketball Academy';
+  if(navigator.share){try{await navigator.share({title,text:title,url});return}catch(e){if(e&&e.name==='AbortError')return}}
+  try{await navigator.clipboard.writeText(url)}catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}
+  const tt=document.getElementById('pshare-t');tt.classList.add('on');clearTimeout(tt._h);tt._h=setTimeout(()=>tt.classList.remove('on'),1800)};
 document.getElementById('pclose').onclick=()=>{history.pushState('',document.title,location.pathname+location.search);closeP()};
 document.getElementById('p-prev').onclick=()=>location.hash=nb(-1).id;
 document.getElementById('p-next').onclick=()=>location.hash=nb(1).id;
