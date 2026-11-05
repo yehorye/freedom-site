@@ -12,8 +12,10 @@
 <meta property="og:title" content="Freedom UA Basketball Academy">
 <meta property="og:description" content="Roster, game schedule and results, coaching staff and players playing abroad.">
 <meta property="og:url" content="https://freedomuabasketball.com/">
-<meta property="og:image" content="https://freedomuabasketball.com/img/logo.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://freedomuabasketball.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SportsOrganization","name":"Freedom UA Basketball Academy","sport":"Basketball","url":"https://freedomuabasketball.com/","logo":"https://freedomuabasketball.com/img/logo.png","sameAs":["https://www.instagram.com/freedom_basketball_ua/"]}</script>
 
 <link rel="icon" type="image/png" href="img/logo.png">
@@ -32,6 +34,7 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.lock{overflow:hidden}
 a{color:inherit;text-decoration:none}
+.card h3 a.pl{display:inherit;color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{display:block;max-width:100%}
 .grain{display:none;
@@ -889,7 +892,7 @@ grid.innerHTML=PLAYERS.map(p=>`
    <div class="photo${CUT.has(p.id)?' cut':''}"><img src="${src(p.id)}" alt="${p.first} ${p.last}" loading="lazy"></div>
    <div class="info">
      ${NT[p.id]?`<div class="ntpill"><i></i>Ukraine NT · ${NT[p.id].map(x=>x[0]).join(' / ')}</div>`:''}<div class="pos">#${p.n} · ${p.pos}</div>
-     <h3 class="${p.last.length>11?'long':''}"><span>${p.first}</span>${p.last}</h3>
+     <h3 class="${p.last.length>11?'long':''}"><a href="players/${p.id}/" class="pl" onclick="event.preventDefault()"><span>${p.first}</span>${p.last}</a></h3>
      <div class="meta"><span>${p.h}" · ${cm(p.h)} cm · ${p.born}</span><span class="hl"><i></i>Highlights</span></div>
    </div>
    <div class="shine"></div>
