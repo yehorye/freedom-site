@@ -3,21 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Freedom UA Basketball Academy</title>
-<meta name="description" content="Freedom UA Basketball Academy: Ukrainian basketball academy. Roster, game schedule and results, coaching staff and players playing abroad.">
-<meta name="google-site-verification" content="My3SfnlL94H8T6t9dnKkYFnaVnkROSI_DnDw0eL11XU">
-<link rel="canonical" href="https://freedomuabasketball.com/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Freedom UA Basketball">
-<meta property="og:title" content="Freedom UA Basketball Academy">
-<meta property="og:description" content="Roster, game schedule and results, coaching staff and players playing abroad.">
-<meta property="og:url" content="https://freedomuabasketball.com/">
-<meta property="og:image" content="https://freedomuabasketball.com/img/og.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SportsOrganization","name":"Freedom UA Basketball Academy","sport":"Basketball","url":"https://freedomuabasketball.com/","logo":"https://freedomuabasketball.com/img/logo.png","sameAs":["https://www.instagram.com/freedom_basketball_ua/"]}</script>
-
+<title>Freedom UA Basketball</title>
 <link rel="icon" type="image/png" href="img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +20,6 @@ html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.lock{overflow:hidden}
 a{color:inherit;text-decoration:none}
-.card h3 a.pl{display:inherit;color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 img{display:block;max-width:100%}
 .grain{display:none;
@@ -165,11 +150,6 @@ section{position:relative}
 #profile.open{display:block}
 #profile .pclose{position:fixed;top:22px;right:28px;z-index:3;width:50px;height:50px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:rgba(9,8,10,.6);backdrop-filter:blur(8px);transition:transform .4s}
 #profile .pclose:hover{transform:rotate(90deg)}
-#profile .pshare{position:fixed;top:22px;right:92px;z-index:3;width:50px;height:50px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:rgba(9,8,10,.6);backdrop-filter:blur(8px);transition:background .3s,border-color .3s}
-#profile .pshare:hover{background:var(--wine);border-color:var(--wine2)}
-#profile .pshare svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-#profile .pshare-t{position:fixed;top:82px;right:28px;z-index:3;padding:8px 14px;border-radius:99px;background:rgba(9,8,10,.85);border:1px solid var(--line);font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(-6px);transition:.3s;pointer-events:none}
-#profile .pshare-t.on{opacity:1;transform:none}
 #profile .pclose::before,#profile .pclose::after{content:"";position:absolute;width:18px;height:1.5px;background:#fff;transform:rotate(45deg)}
 #profile .pclose::after{transform:rotate(-45deg)}
 .pf{display:grid;grid-template-columns:1.05fr 1fr;min-height:100vh}
@@ -562,8 +542,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
   /* profile */
   #profile .pclose{top:14px;right:14px;width:44px;height:44px}
-  #profile .pshare{top:14px;right:66px;width:44px;height:44px}
-  #profile .pshare-t{top:66px;right:14px}
   .pf{display:block;min-height:0}
   .pf-photo{min-height:0;height:62vw;max-height:420px}
   .pf-photo img,.pf-photo img.cut{height:100%}
@@ -818,7 +796,6 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
 <!-- player profile -->
 <div id="profile" aria-modal="true" role="dialog">
-  <button class="pshare" id="pshare" aria-label="Share profile"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.8l7.4-4.3M8.3 13.2l7.4 4.3"/></svg></button><div class="pshare-t" id="pshare-t">Link copied</div>
   <button class="pclose" id="pclose" aria-label="Close"></button>
   <div class="pf">
     <div class="pf-photo"><div class="bignum" id="p-num"></div><img id="p-img" alt=""></div>
@@ -866,7 +843,7 @@ const PLAYERS=[
  {id:'r-manuilyk',n:35,first:'Roman',last:'Manuilyk',pos:'Combo Guard',g:'G',born:2008,h:"6'5",w:185,highlights:'',tag:'Captain'},
  {id:'j-koretskyi',t:'j',n:1,first:'Denys',last:'Koretskyi',pos:'Guard',g:'G',born:2011,h:"6'1",w:139,highlights:''},
  {id:'j-bilenko',t:'j',n:2,first:'Yehor',last:'Bilenko',pos:'Guard',g:'G',born:2011,h:"6'2",w:168,highlights:''},
- {id:'j-sokolov',t:'j',n:7,first:'Volodymyr',last:'Sokolov',pos:'Guard',g:'G',born:2011,h:"5'9",w:139,highlights:''},
+ 
  {id:'j-genchmazlumo',t:'j',n:9,first:'Timur',last:'Genchmazlumo',pos:'Guard',g:'G',born:2011,h:"5'6",w:132,highlights:''},
  {id:'j-striukov',t:'j',n:10,first:'Ivan',last:'Striukov',pos:'Forward',g:'F',born:2011,h:"6'4",w:198,highlights:''},
  {id:'j-samokhatny',t:'j',n:11,first:'Anton',last:'Samokhatny',pos:'Guard',g:'G',born:2011,h:"6'0",w:141,highlights:''},
@@ -876,13 +853,14 @@ const PLAYERS=[
  {id:'j-shvetsov',t:'j',n:23,first:'Mykhailo',last:'Shvetsov',pos:'Guard',g:'G',born:2011,h:"6'0",w:154,highlights:''},
  {id:'j-khodzinskyi',t:'j',n:32,first:'Yehor',last:'Khodzinskyi',pos:'Forward',g:'F',born:2011,h:"6'3",w:154,highlights:''},
  {id:'j-volzhyn',t:'j',n:34,first:'Adam',last:'Volzhyn',pos:'Guard',g:'G',born:2012,h:"6'1",w:145,highlights:''},
- {id:'j-sabirov',t:'j',n:50,first:'Timofey',last:'Sabirov',pos:'Center',g:'C',born:2011,h:"6'7",w:265,highlights:''},
+ {id:'j-skliar',t:'j',n:44,first:'Stepan',last:'Skliar',pos:'Guard',g:'G',born:2013,h:"5'5",w:117,highlights:''},
+  {id:'j-sabirov',t:'j',n:50,first:'Timofey',last:'Sabirov',pos:'Center',g:'C',born:2011,h:"6'7",w:265,highlights:''},
  {id:'j-arkhypenko',t:'j',n:53,first:'Andrii',last:'Arkhypenko',pos:'Guard',g:'G',born:2010,h:"5'6",w:156,highlights:''},
  {id:'j-derkach',t:'j',n:54,first:'Oleksandr',last:'Derkach',pos:'Guard',g:'G',born:2011,h:"6'1",w:143,highlights:''},
 ];
 PLAYERS.forEach(p=>p.t=p.t||'a');
 const NT={"r-manuilyk": [["U16", "2024", "EYBL & EuroBasket camp"]], "mykhailovych": [["U16", "2024", "EYBL & EuroBasket camp"]], "babych": [["U18", "2026", "FIBA U18 EuroBasket, Div. B"], ["U16", "2024", "FIBA U16 EuroBasket, Div. B"]], "svyrydov": [["U16", "2025", "FIBA U16 EuroBasket, Div. B"]], "hanytskyi": [["U16", "2025", "FIBA U16 EuroBasket, Div. B"]], "suprun": [["U16", "2026", "FIBA U16 EuroBasket, Div. B"]]};
-const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "horb", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-sokolov", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "vakulenko"]);
+const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "horb", "j-arkhypenko", "j-bezsudnyi", "j-bilenko", "j-derkach", "j-didusenko", "j-genchmazlumo", "j-khodzinskyi", "j-koretskyi", "j-sabirov", "j-samokhatny", "j-shvetsov", "j-skliar", "j-solomyanikov", "j-striukov", "j-volzhyn", "lishchyna", "m-manuilyk", "mykhailovych", "r-manuilyk", "rublenko", "rudomanenko", "suprun", "svyrydov", "vakulenko"]);
 const src=id=>CUT.has(id)?`img/${id}.webp`:`img/${id}.jpg`;
 const GD=window.FUA_GAMES||{games:[],upcoming:[],standings:[]};
 const ED=window.FUA_EYBL||{games:[]};
@@ -900,7 +878,7 @@ grid.innerHTML=PLAYERS.map(p=>`
    <div class="photo${CUT.has(p.id)?' cut':''}"><img src="${src(p.id)}" alt="${p.first} ${p.last}" loading="lazy"></div>
    <div class="info">
      ${NT[p.id]?`<div class="ntpill"><i></i>Ukraine NT · ${NT[p.id].map(x=>x[0]).join(' / ')}</div>`:''}<div class="pos">#${p.n} · ${p.pos}</div>
-     <h3 class="${p.last.length>11?'long':''}"><a href="players/${p.id}/" class="pl" onclick="event.preventDefault()"><span>${p.first}</span>${p.last}</a></h3>
+     <h3 class="${p.last.length>11?'long':''}"><span>${p.first}</span>${p.last}</h3>
      <div class="meta"><span>${p.h}" · ${cm(p.h)} cm · ${p.born}</span><span class="hl"><i></i>Highlights</span></div>
    </div>
    <div class="shine"></div>
@@ -988,11 +966,6 @@ function openP(i){
 function closeP(){gsap.to(pr,{clipPath:'inset(0 0 100% 0)',duration:.6,ease:'expo.inOut',onComplete:()=>{pr.classList.remove('open');document.body.classList.remove('lock');idx=-1}})}
 function route(){const h=location.hash.slice(1);const i=PLAYERS.findIndex(p=>p.id===h);if(i>=0)openP(i);else if(pr.classList.contains('open'))closeP()}
 addEventListener('hashchange',route);
-document.getElementById('pshare').onclick=async()=>{
-  const p=PLAYERS[idx],url=location.origin+'/players/'+p.id+'/',title=p.first+' '+p.last+' · #'+p.n+' · Freedom UA Basketball Academy';
-  if(navigator.share){try{await navigator.share({title,text:title,url});return}catch(e){if(e&&e.name==='AbortError')return}}
-  try{await navigator.clipboard.writeText(url)}catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove()}
-  const tt=document.getElementById('pshare-t');tt.classList.add('on');clearTimeout(tt._h);tt._h=setTimeout(()=>tt.classList.remove('on'),1800)};
 document.getElementById('pclose').onclick=()=>{history.pushState('',document.title,location.pathname+location.search);closeP()};
 document.getElementById('p-prev').onclick=()=>location.hash=nb(-1).id;
 document.getElementById('p-next').onclick=()=>location.hash=nb(1).id;

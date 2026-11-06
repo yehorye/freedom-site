@@ -26,7 +26,7 @@ EYBL_PLAYERS = {'Koretsk': 'j-koretskyi', 'Bilenko': 'j-bilenko', 'Manylyk': 'm-
     'Struikov': 'j-striukov', 'Striukov': 'j-striukov', 'Samokhat': 'j-samokhatny', 'Suprun': 'suprun',
     'Solomyanikov': 'j-solomyanikov', 'Bezsyd': 'j-bezsudnyi', 'Bezsud': 'j-bezsudnyi', 'Shvetsov': 'j-shvetsov',
     'Khodzin': 'j-khodzinskyi', 'Sabirov': 'j-sabirov', 'Arkhypenko': 'j-arkhypenko', 'Didusenko': 'j-didusenko',
-    'Volzhyn': 'j-volzhyn', 'Derkach': 'j-derkach', 'Genchmazlumo': 'j-genchmazlumo', 'Sokolov': 'j-sokolov'}
+    'Volzhyn': 'j-volzhyn', 'Derkach': 'j-derkach', 'Genchmazlumo': 'j-genchmazlumo', 'Skliar': 'j-skliar', 'Sklyar': 'j-skliar'}
 TEAMS = {'ЧОДЮСШ': ('CHEBASKET', 'CHEBASKET (Chernivtsi)'), 'ПОЛІССЯ': ('Polissya', 'Polissya-Zhytomyr Polytechnic'),
     'ДІДІБАО': ('DiDiBao', 'DiDiBao (Kamianets-Podilskyi)'), 'ЧАЙКА': ('Chaika-VMSU', 'Chaika-VMSU (Odesa)'),
     'НІКО': ('Niko-Basket-2', 'Niko-Basket-2 (Mykolaiv)')}
