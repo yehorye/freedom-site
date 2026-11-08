@@ -691,6 +691,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <div class="results" id="results"></div>
     <div class="glabel">Upcoming</div>
     <div class="upcoming" id="upcoming"></div>
+    <div id="u20wrap"><div class="glabel">EYBL U20 · Upcoming</div>
+    <div class="upcoming" id="u20"></div></div>
   </div>
 </section>
 
@@ -1056,6 +1058,12 @@ const close=()=>{m.classList.remove('open');want=false;if(ctl)ctl.pause();set(fa
 b.addEventListener('click',()=>m.classList.contains('open')?close():open());
 document.getElementById('mpx').addEventListener('click',close);
 document.querySelectorAll('.abhl').forEach(x=>x.addEventListener('click',()=>{if(ctl)ctl.pause()}));})();
+
+// ---- EYBL U20 schedule (manual)
+(()=>{const U20=[['2026-11-12','14:00','Veszprem'],['2026-11-13','11:50','Richards Elite'],['2026-11-14','11:00','Basketball Star Academy'],['2026-11-15','10:00','SKUP-BCM Olomouc']];
+const now=new Date(),list=U20.filter(g=>new Date(g[0]+'T23:59:00+01:00')>now),w=document.getElementById('u20wrap');
+if(!list.length){w.style.display='none';return}
+document.getElementById('u20').innerHTML=list.map(g=>`<div class="up"><b>${fmtD(g[0])} · ${g[1]}</b><span>vs ${g[2]}</span><small>EYBL U20</small></div>`).join('');})();
 </script>
 </body>
 </html>
