@@ -361,6 +361,10 @@ section{position:relative}
 @media(max-width:760px){.mplayer{right:10px;left:14px;bottom:10px;width:auto}.mplayer .mpx{left:-8px;top:-10px}}
 .cd .live{grid-column:1/-1}.cd .live b{color:#ff4d5e;animation:pulse 1.4s ease-in-out infinite}
 @keyframes pulse{50%{opacity:.45}}
+.livebtn{display:inline-flex;align-items:center;gap:10px;margin-top:18px;padding:11px 18px;border-radius:99px;border:1px solid rgba(255,77,94,.6);background:rgba(142,34,50,.3);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff;transition:background .3s}
+.livebtn:hover{background:rgba(142,34,50,.7)}.livebtn i{width:8px;height:8px;border-radius:50%;background:#ff4d5e;animation:pulse 1.4s ease-in-out infinite}
+.liveframe iframe{display:block;width:100%;height:620px;margin-top:18px;border:0;border-radius:14px;background:#fff}
+@media(max-width:760px){.liveframe iframe{height:520px}}
 /* ---------- staff ---------- */
 #staff{padding:120px 0;background:linear-gradient(180deg,var(--bg),var(--bg2) 30%,var(--bg))}
 .staff{display:grid;grid-template-columns:1fr 1fr;gap:22px}
@@ -997,9 +1001,9 @@ const byId=Object.fromEntries(PLAYERS.map(p=>[p.id,p]));
     el.innerHTML=`<div class="nlab">Next game${u20?' · EYBL U20':' · Higher League'}</div>
       <div class="nteams"><span>Freedom UA</span><i>${u20||u.home?'vs':'@'}</i><span>${u20?u.opp:u.oppFull}</span></div>
       <div class="nmeta">${day} · ${u20?`Tip-off ${kyiv} Kyiv time${u.city?' · '+u.city:''}`:(u.home?'Home':'Away')+' · Tip-off time TBA'}</div>
-      <div class="cd" id="cd"></div><div class="cdl" id="cdl">${u20?'until tip-off':'until game day'}</div>`;
+      <div class="cd" id="cd"></div><div class="cdl" id="cdl">${u20?'until tip-off':'until game day'}</div>${u20&&u.id?`<a class="livebtn" href="https://fibalivestats.dcd.shared.geniussports.com/u/EYBL/${u.id}/" target="_blank" rel="noopener"><i></i>FIBA Live Stats ↗</a><div class="liveframe" id="lf"></div>`:''}`;
     const tick=()=>{let ms=nx.T-new Date();
-      if(ms<=0){document.getElementById('cd').innerHTML='<div class="live"><b>LIVE</b><small>Game in progress</small></div>';document.getElementById('cdl').textContent='';return}
+      if(ms<=0){document.getElementById('cd').innerHTML='<div class="live"><b>LIVE</b><small>Game in progress</small></div>';document.getElementById('cdl').textContent='';const lf=document.getElementById('lf');if(lf&&!lf.dataset.on){lf.dataset.on=1;lf.innerHTML=`<iframe src="https://fibalivestats.dcd.shared.geniussports.com/u/EYBL/${u.id}/" loading="lazy" title="FIBA Live Stats"></iframe>`}return}
       const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;
       document.getElementById('cd').innerHTML=[[d,'Days'],[h,'Hours'],[m,'Min'],[s,'Sec']].map(([v,l])=>`<div><b>${String(v).padStart(2,'0')}</b><small>${l}</small></div>`).join('')};
     tick();setInterval(tick,1000);
