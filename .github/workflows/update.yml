@@ -1,7 +1,8 @@
 name: Update games & stats
 on:
   schedule:
-    - cron: '17 4 * * *'   # every day ~06:17 Kyiv
+    - cron: '17 4 * * *'
+    - cron: '7 9-22 * * *'   # hourly during the day
   workflow_dispatch: {}
 permissions:
   contents: write

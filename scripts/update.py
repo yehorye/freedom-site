@@ -284,7 +284,7 @@ def write_outputs(st):
                 key=lambda g: g.get('date', ''))
     edata = dict(league='EYBL U16', stage='EYBL U16 · Season 2026/27', season='2026/27', updated=today, games=eg, teamUrl=EYBL_TEAM)
     open(os.path.join(ROOT, 'eybl.js'), 'w').write('window.FUA_EYBL=' + json.dumps(edata, ensure_ascii=False) + ';')
-    e20 = sorted([dict(id=k, **{x: y for x, y in v.items() if x != 'url'}) for k, v in st.get('eybl20', {}).items() if v.get('lines')],
+    e20 = sorted([dict(id=k, **{x: y for x, y in v.items() if x not in ('url', 'id')}) for k, v in st.get('eybl20', {}).items() if v.get('lines')],
                  key=lambda g: g.get('date', ''))
     up20 = sorted([dict(id=k, date=v['date'], time=v.get('time', ''), city=(v.get('venue') or '').split(',')[0], opp=opp_from_url(v.get('url', '')))
                    for k, v in st.get('eybl20', {}).items() if not v.get('lines') and v.get('date') and v['date'] >= today],
