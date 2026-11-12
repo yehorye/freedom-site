@@ -2431,5 +2431,31 @@
    1,
    5
   ]
- ]
+ ],
+ "eybl20": {
+  "2953923": {
+   "url": "https://eybl.tv/match/2953923/freedom-ua-basketball-academy/team-veszprem",
+   "date": "2026-11-12",
+   "time": "13:00",
+   "venue": "Budapest, Hungary"
+  },
+  "2953927": {
+   "url": "https://eybl.tv/match/2953927/richards-elite/freedom-ua-basketball-academy",
+   "date": "2026-11-13",
+   "time": "10:50",
+   "venue": "Budapest, Hungary"
+  },
+  "2953933": {
+   "url": "https://eybl.tv/match/2953933/basketball-star-academy/freedom-ua-basketball-academy",
+   "date": "2026-11-14",
+   "time": "10:00",
+   "venue": "Budapest, Hungary"
+  },
+  "2953944": {
+   "url": "https://eybl.tv/match/2953944/freedom-ua-basketball-academy/skup-bcm-olomouc",
+   "date": "2026-11-15",
+   "time": "09:00",
+   "venue": "Budapest, Hungary"
+  }
+ }
 }
