@@ -1069,7 +1069,7 @@ document.querySelectorAll('.abhl').forEach(x=>x.addEventListener('click',()=>{if
 const res=[...(E20.games||[])].reverse(),up=(E20.upcoming||[]).filter(u=>u.date>=today);
 document.getElementById('u20res').innerHTML=res.map(resHTML).join('');
 document.getElementById('u20rl').style.display=document.getElementById('u20res').style.display=res.length?'':'none';
-document.getElementById('u20').innerHTML=up.map(g=>`<div class="up"><b>${fmtD(g.date)}${g.time?' · '+g.time:''}</b><span>vs ${g.opp}</span><small>EYBL U20</small></div>`).join('');
+document.getElementById('u20').innerHTML=up.map(g=>`<div class="up"><b>${fmtD(g.date)}${g.time?' · '+g.time:''}</b><span>vs ${g.opp}</span><small>EYBL U20${g.city?' · '+g.city+(g.time?' time':''):''}</small></div>`).join('');
 document.getElementById('u20ul').style.display=document.getElementById('u20').style.display=up.length?'':'none';
 if(!res.length&&!up.length)w.style.display='none';})();
 </script>

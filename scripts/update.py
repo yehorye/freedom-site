@@ -286,7 +286,7 @@ def write_outputs(st):
     open(os.path.join(ROOT, 'eybl.js'), 'w').write('window.FUA_EYBL=' + json.dumps(edata, ensure_ascii=False) + ';')
     e20 = sorted([dict(id=k, **{x: y for x, y in v.items() if x != 'url'}) for k, v in st.get('eybl20', {}).items() if v.get('lines')],
                  key=lambda g: g.get('date', ''))
-    up20 = sorted([dict(date=v['date'], time=v.get('time', ''), opp=opp_from_url(v.get('url', '')))
+    up20 = sorted([dict(date=v['date'], time=v.get('time', ''), city=(v.get('venue') or '').split(',')[0], opp=opp_from_url(v.get('url', '')))
                    for v in st.get('eybl20', {}).values() if not v.get('lines') and v.get('date') and v['date'] >= today],
                   key=lambda u: (u['date'], u['time']))
     d20 = dict(league='EYBL U20', stage='EYBL U20 · Season 2026/27', season='2026/27', updated=today, games=e20, upcoming=up20, teamUrl=EYBL20_TEAM)
