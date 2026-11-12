@@ -13,6 +13,8 @@ STATE = os.path.join(ROOT, 'data', 'state.json')
 LEAGUE, SEASON = 8185, 133439
 FBU = 'https://fbu.ua/statistics/league-%d' % LEAGUE
 EYBL_TEAM = 'https://eybl.tv/boys/team/204838/freedom-ua-basketball-academy'
+EYBL20_TEAM = 'https://eybl.tv/boys/team/202188/freedom-ua-basketball-academy'
+EYBL_TEAMS = [('eybl', EYBL_TEAM), ('eybl20', EYBL20_TEAM)]
 UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36'
 
 # Ukrainian surname fragment -> site player id (senior squad)
@@ -26,7 +28,12 @@ EYBL_PLAYERS = {'Koretsk': 'j-koretskyi', 'Bilenko': 'j-bilenko', 'Manylyk': 'm-
     'Struikov': 'j-striukov', 'Striukov': 'j-striukov', 'Samokhat': 'j-samokhatny', 'Suprun': 'suprun',
     'Solomyanikov': 'j-solomyanikov', 'Bezsyd': 'j-bezsudnyi', 'Bezsud': 'j-bezsudnyi', 'Shvetsov': 'j-shvetsov',
     'Khodzin': 'j-khodzinskyi', 'Sabirov': 'j-sabirov', 'Arkhypenko': 'j-arkhypenko', 'Didusenko': 'j-didusenko',
-    'Volzhyn': 'j-volzhyn', 'Derkach': 'j-derkach', 'Genchmazlumo': 'j-genchmazlumo', 'Skliar': 'j-skliar', 'Sklyar': 'j-skliar'}
+    'Volzhyn': 'j-volzhyn', 'Derkach': 'j-derkach', 'Genchmazlumo': 'j-genchmazlumo', 'Skliar': 'j-skliar', 'Sklyar': 'j-skliar',
+    # senior squad (EYBL U20)
+    'Lishch': 'lishchyna', 'Lyshch': 'lishchyna', 'Horb': 'horb', 'Svyryd': 'svyrydov', 'Sviryd': 'svyrydov',
+    'Mykhailov': 'mykhailovych', 'Mykhaylov': 'mykhailovych', 'Hanytsk': 'hanytskyi', 'Ganytsk': 'hanytskyi',
+    'Vakulenk': 'vakulenko', 'Babych': 'babych', 'Babich': 'babych', 'Bondar': 'bondar', 'Topoln': 'topolnyk',
+    'Rudomanenk': 'rudomanenko', 'Rublenk': 'rublenko', 'Bakhtie': 'bakhtieiev', 'Bakhte': 'bakhtieiev'}
 TEAMS = {'ЧОДЮСШ': ('CHEBASKET', 'CHEBASKET (Chernivtsi)'), 'ПОЛІССЯ': ('Polissya', 'Polissya-Zhytomyr Polytechnic'),
     'ДІДІБАО': ('DiDiBao', 'DiDiBao (Kamianets-Podilskyi)'), 'ЧАЙКА': ('Chaika-VMSU', 'Chaika-VMSU (Odesa)'),
     'НІКО': ('Niko-Basket-2', 'Niko-Basket-2 (Mykolaiv)')}
@@ -46,10 +53,20 @@ def pid_fbu(name):
             return v
 
 
-def pid_eybl(fam):
+def pid_eybl(fam, first=''):
+    if 'manuil' in fam.lower() or 'manyl' in fam.lower():
+        return 'r-manuilyk' if first.lower().startswith('rom') else 'm-manuilyk'
     for k, v in EYBL_PLAYERS.items():
         if k.lower() in fam.lower():
             return v
+
+
+def opp_from_url(u):
+    parts = [x for x in u.split('/match/')[-1].split('/')[1:] if x and 'freedom' not in x]
+    if not parts:
+        return ''
+    small = {'bc', 'bk', 'kk', 'ba', 'bcm', 'skup', 'ksk', 'sk', 'mbk', 'bkm'}
+    return ' '.join(w.upper() if w in small else w.capitalize() for w in parts[0].split('-'))
 
 
 def num(x):
@@ -153,8 +170,8 @@ async def fbu_game(pg, gid):
     return info
 
 
-async def eybl_matches(pg):
-    await pg.goto(EYBL_TEAM, timeout=60000)
+async def eybl_matches(pg, team_url=EYBL_TEAM):
+    await pg.goto(team_url, timeout=60000)
     await pg.wait_for_timeout(6000)
     links = await pg.eval_on_selector_all('a[href*="/match/"]', 'as=>as.map(a=>a.href)')
     return sorted(set(re.search(r'/match/(\d+)', h).group(1) for h in links if re.search(r'/match/(\d+)', h))), \
@@ -168,7 +185,7 @@ def eybl_game(gid, url):
     us, them = d['tm'][k].get('score', 0), d['tm'][o].get('score', 0)
     lines = {}
     for p in d['tm'][k].get('pl', {}).values():
-        pid = pid_eybl(p.get('familyName', ''))
+        pid = pid_eybl(p.get('familyName', ''), p.get('firstName', ''))
         if not pid or not p.get('sMinutes') or p['sMinutes'] in ('0:00', '00:00'):
             continue
         lines[pid] = dict(n=num(p.get('shirtNumber')), min=p['sMinutes'], pts=p.get('sPoints', 0), reb=p.get('sReboundsTotal', 0),
@@ -184,7 +201,7 @@ def eybl_game(gid, url):
 
 async def main():
     st = load_state()
-    st.setdefault('fbu', {}); st.setdefault('eybl', {})
+    st.setdefault('fbu', {}); st.setdefault('eybl', {}); st.setdefault('eybl20', {})
     async with async_playwright() as p:
         kw = {}
         if os.environ.get('HTTPS_PROXY'):
@@ -211,11 +228,12 @@ async def main():
                 st['standings'] = s
         except Exception as e:
             print('standings failed:', e)
-        # --- EYBL ---
-        try:
-            ids, urls = await eybl_matches(pg)
+        # --- EYBL (U16 juniors + U20 senior squad) ---
+        for key, team_url in EYBL_TEAMS:
+          try:
+            ids, urls = await eybl_matches(pg, team_url)
             for gid in ids:
-                g = st['eybl'].setdefault(gid, {'url': urls[gid]})
+                g = st[key].setdefault(gid, {'url': urls[gid]})
                 if g.get('date'):
                     continue
                 try:
@@ -228,18 +246,21 @@ async def main():
                     if v:
                         g['venue'] = v.group(1)
                 except Exception as e:
-                    print('eybl match page failed', gid, e)
-        except Exception as e:
-            print('eybl team page failed:', e)
+                    print('eybl match page failed', key, gid, e)
+          except Exception as e:
+            print('eybl team page failed:', key, e)
         await b.close()
-    for gid, g in st['eybl'].items():
-        if g.get('lines'):
-            continue
-        try:
-            g.update(eybl_game(gid, g.get('url', '')))
-            print('eybl', gid, g.get('us'), g.get('them'), len(g.get('lines', {})))
-        except Exception as e:
-            print('eybl game failed', gid, e)
+    for key, _ in EYBL_TEAMS:
+        for gid, g in st[key].items():
+            if g.get('lines'):
+                continue
+            if g.get('date') and g['date'] > dt.date.today().isoformat():
+                continue  # not played yet
+            try:
+                g.update(eybl_game(gid, g.get('url', '')))
+                print(key, gid, g.get('us'), g.get('them'), len(g.get('lines', {})))
+            except Exception as e:
+                print('eybl game failed', key, gid, e)
     os.makedirs(os.path.dirname(STATE), exist_ok=True)
     json.dump(st, open(STATE, 'w'), ensure_ascii=False, indent=1)
     write_outputs(st)
@@ -263,6 +284,13 @@ def write_outputs(st):
                 key=lambda g: g.get('date', ''))
     edata = dict(league='EYBL U16', stage='EYBL U16 · Season 2026/27', season='2026/27', updated=today, games=eg, teamUrl=EYBL_TEAM)
     open(os.path.join(ROOT, 'eybl.js'), 'w').write('window.FUA_EYBL=' + json.dumps(edata, ensure_ascii=False) + ';')
+    e20 = sorted([dict(id=k, **{x: y for x, y in v.items() if x != 'url'}) for k, v in st.get('eybl20', {}).items() if v.get('lines')],
+                 key=lambda g: g.get('date', ''))
+    up20 = sorted([dict(date=v['date'], time=v.get('time', ''), opp=opp_from_url(v.get('url', '')))
+                   for v in st.get('eybl20', {}).values() if not v.get('lines') and v.get('date') and v['date'] >= today],
+                  key=lambda u: (u['date'], u['time']))
+    d20 = dict(league='EYBL U20', stage='EYBL U20 · Season 2026/27', season='2026/27', updated=today, games=e20, upcoming=up20, teamUrl=EYBL20_TEAM)
+    open(os.path.join(ROOT, 'eybl20.js'), 'w').write('window.FUA_EYBL20=' + json.dumps(d20, ensure_ascii=False) + ';')
     print('written', len(played), 'league games,', len(upcoming), 'upcoming,', len(eg), 'eybl games')
 
 

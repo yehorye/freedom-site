@@ -20,5 +20,5 @@ jobs:
         run: |
           git config user.name "yehorye"
           git config user.email "efimove130308@gmail.com"
-          git add games.js eybl.js data/state.json
+          git add games.js eybl.js eybl20.js data/state.json
           git diff --cached --quiet || (git commit -m "Auto-update games & stats" && git push)

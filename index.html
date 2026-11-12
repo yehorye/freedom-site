@@ -691,7 +691,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
     <div class="results" id="results"></div>
     <div class="glabel">Upcoming</div>
     <div class="upcoming" id="upcoming"></div>
-    <div id="u20wrap"><div class="glabel">EYBL U20 · Upcoming</div>
+    <div id="u20wrap"><div class="glabel" id="u20rl">EYBL U20 · Results</div>
+    <div class="results" id="u20res"></div>
+    <div class="glabel" id="u20ul">EYBL U20 · Upcoming</div>
     <div class="upcoming" id="u20"></div></div>
   </div>
 </section>
@@ -825,6 +827,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
 
 <script src="games.js"></script>
 <script src="eybl.js"></script>
+<script src="eybl20.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -868,6 +871,7 @@ const CUT=new Set(["babych", "bakhtieiev", "bondar", "hanytskyi", "horb", "j-ark
 const src=id=>CUT.has(id)?`img/${id}.webp`:`img/${id}.jpg`;
 const GD=window.FUA_GAMES||{games:[],upcoming:[],standings:[]};
 const ED=window.FUA_EYBL||{games:[]};
+const E20=window.FUA_EYBL20||{games:[],upcoming:[]};
 
 const cm=h=>{const[f,i]=h.split("'").map(Number);return Math.round((f*12+i)*2.54)};
 const kg=l=>Math.round(l*0.4536);
@@ -951,9 +955,9 @@ function openP(i){
     <div class="psg">${[['PTS',S.ppg],['REB',S.rpg],['AST',S.apg],['STL',S.spg],['EFF',S.eff]].map(([k,v])=>`<div><b>${v}</b><small>${k}</small></div>`).join('')}</div>
     <table class="log"><tr><th>Date</th><th>Opp</th><th>Res</th><th>MIN</th><th>PTS</th><th>REB</th><th>AST</th><th>STL</th></tr>
     ${S.L.map(({g,l})=>`<tr><td>${fmtD(g.date)}</td><td>${g.home||g.neutral?'vs':'@'} ${g.oppFull.split(' (')[0].split('-')[0].replace('Basketball Academy','BA').replace('BC ','')}</td><td class="${g.win?'w':'l'}">${g.win?'W':'L'} ${g.us}-${g.them}</td><td>${l.min.split(':')[0]}</td><td>${l.pts}</td><td>${l.reb}</td><td>${l.ast}</td><td>${l.stl}</td></tr>`).join('')}</table>`;
-  const SA=seasonStats(p.id,GD),SE=seasonStats(p.id,ED);
-  ps.innerHTML=(SA?block(SA,'Season 2026/27 · Higher League'):'')+(SE?`<div class="psgap"></div>`+block(SE,'EYBL U16 · Season 2026/27'):'');
-  ps.style.display=(SA||SE)?'':'none';
+  const SA=seasonStats(p.id,GD),SE=seasonStats(p.id,ED),S20=seasonStats(p.id,E20);
+  ps.innerHTML=[SA&&block(SA,'Season 2026/27 · Higher League'),S20&&block(S20,'EYBL U20 · Season 2026/27'),SE&&block(SE,'EYBL U16 · Season 2026/27')].filter(Boolean).join('<div class="psgap"></div>');
+  ps.style.display=(SA||SE||S20)?'':'none';
   const id=ytId(p.highlights),hl=document.getElementById('p-hl'),v=document.getElementById('p-video');
   hl.classList.toggle('soon',!id);v.style.display='none';
   document.getElementById('p-hltext').textContent=id?'Watch game highlights':'Highlight reel coming soon';
@@ -999,6 +1003,7 @@ const byId=Object.fromEntries(PLAYERS.map(p=>[p.id,p]));
       <div class="rtop">Top scorer<b>${tp?tp.first[0]+'. '+tp.last:''} · ${g.top[1]} pts</b></div>
       <div class="rbtn"><a href="${g.box}" target="_blank" rel="noopener">Box score</a><a href="${g.video}" target="_blank" rel="noopener">Video</a></div>
     </div>`};
+  window.resHTML=resHTML;
   document.getElementById('results').innerHTML=[...GD.games].reverse().map(resHTML).join('');
   if(GD.updated)document.getElementById('gupd').textContent='Updated '+new Date(GD.updated+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long'});
   document.getElementById('upcoming').innerHTML=GD.upcoming.map(u=>`<div class="up"><b>${u.date?fmtD(u.date):'TBA'}</b><span>${u.home?'vs':'@'} ${u.oppFull}</span><small>${u.home?'Home':'Away'}</small></div>`).join('');
@@ -1059,11 +1064,14 @@ b.addEventListener('click',()=>m.classList.contains('open')?close():open());
 document.getElementById('mpx').addEventListener('click',close);
 document.querySelectorAll('.abhl').forEach(x=>x.addEventListener('click',()=>{if(ctl)ctl.pause()}));})();
 
-// ---- EYBL U20 schedule (manual)
-(()=>{const U20=[['2026-11-12','14:00','Veszprem'],['2026-11-13','11:50','Richards Elite'],['2026-11-14','11:00','Basketball Star Academy'],['2026-11-15','10:00','SKUP-BCM Olomouc']];
-const now=new Date(),list=U20.filter(g=>new Date(g[0]+'T23:59:00+01:00')>now),w=document.getElementById('u20wrap');
-if(!list.length){w.style.display='none';return}
-document.getElementById('u20').innerHTML=list.map(g=>`<div class="up"><b>${fmtD(g[0])} · ${g[1]}</b><span>vs ${g[2]}</span><small>EYBL U20</small></div>`).join('');})();
+// ---- EYBL U20 (auto-updated: eybl20.js)
+(()=>{const w=document.getElementById('u20wrap');const today=new Date().toISOString().slice(0,10);
+const res=[...(E20.games||[])].reverse(),up=(E20.upcoming||[]).filter(u=>u.date>=today);
+document.getElementById('u20res').innerHTML=res.map(resHTML).join('');
+document.getElementById('u20rl').style.display=document.getElementById('u20res').style.display=res.length?'':'none';
+document.getElementById('u20').innerHTML=up.map(g=>`<div class="up"><b>${fmtD(g.date)}${g.time?' · '+g.time:''}</b><span>vs ${g.opp}</span><small>EYBL U20</small></div>`).join('');
+document.getElementById('u20ul').style.display=document.getElementById('u20').style.display=up.length?'':'none';
+if(!res.length&&!up.length)w.style.display='none';})();
 </script>
 </body>
 </html>
