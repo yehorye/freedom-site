@@ -2567,7 +2567,119 @@
    "url": "https://eybl.tv/match/2953927/richards-elite/freedom-ua-basketball-academy",
    "date": "2026-11-13",
    "time": "10:50",
-   "venue": "Budapest, Hungary"
+   "venue": "Budapest, Hungary",
+   "id": "2953927",
+   "opp": "Richards Elite",
+   "oppFull": "Richards Elite",
+   "home": false,
+   "neutral": true,
+   "us": 19,
+   "them": 11,
+   "box": "https://fibalivestats.dcd.shared.geniussports.com/u/EYBL/2953927/",
+   "video": "https://eybl.tv/match/2953927/richards-elite/freedom-ua-basketball-academy",
+   "lines": {
+    "lishchyna": {
+     "n": 2,
+     "min": "8:46",
+     "pts": 0,
+     "reb": 0,
+     "ast": 2,
+     "stl": 0,
+     "blk": 0,
+     "tov": 0,
+     "eff": 0,
+     "start": true
+    },
+    "horb": {
+     "n": 3,
+     "min": "0:56",
+     "pts": 3,
+     "reb": 0,
+     "ast": 0,
+     "stl": 2,
+     "blk": 0,
+     "tov": 0,
+     "eff": 5,
+     "start": false
+    },
+    "mykhailovych": {
+     "n": 6,
+     "min": "7:42",
+     "pts": 2,
+     "reb": 2,
+     "ast": 1,
+     "stl": 1,
+     "blk": 0,
+     "tov": 1,
+     "eff": 2,
+     "start": true
+    },
+    "babych": {
+     "n": 15,
+     "min": "1:33",
+     "pts": 0,
+     "reb": 0,
+     "ast": 0,
+     "stl": 0,
+     "blk": 0,
+     "tov": 0,
+     "eff": 0,
+     "start": false
+    },
+    "vakulenko": {
+     "n": 19,
+     "min": "7:00",
+     "pts": 3,
+     "reb": 2,
+     "ast": 0,
+     "stl": 2,
+     "blk": 1,
+     "tov": 1,
+     "eff": 4,
+     "start": true
+    },
+    "rublenko": {
+     "n": 22,
+     "min": "9:15",
+     "pts": 8,
+     "reb": 0,
+     "ast": 0,
+     "stl": 0,
+     "blk": 0,
+     "tov": 1,
+     "eff": 6,
+     "start": true
+    },
+    "bakhtieiev": {
+     "n": 30,
+     "min": "0:29",
+     "pts": 0,
+     "reb": 0,
+     "ast": 1,
+     "stl": 0,
+     "blk": 0,
+     "tov": 0,
+     "eff": 1,
+     "start": false
+    },
+    "r-manuilyk": {
+     "n": 35,
+     "min": "8:19",
+     "pts": 3,
+     "reb": 0,
+     "ast": 0,
+     "stl": 0,
+     "blk": 0,
+     "tov": 1,
+     "eff": 2,
+     "start": true
+    }
+   },
+   "top": [
+    "rublenko",
+    8
+   ],
+   "win": true
   },
   "2953933": {
    "url": "https://eybl.tv/match/2953933/basketball-star-academy/freedom-ua-basketball-academy",
