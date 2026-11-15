@@ -2691,7 +2691,119 @@
    "url": "https://eybl.tv/match/2953944/freedom-ua-basketball-academy/skup-bcm-olomouc",
    "date": "2026-11-15",
    "time": "09:00",
-   "venue": "Budapest, Hungary"
+   "venue": "Budapest, Hungary",
+   "id": "2953944",
+   "opp": "SKUP-BCM Olomouc",
+   "oppFull": "SKUP-BCM Olomouc",
+   "home": true,
+   "neutral": true,
+   "us": 99,
+   "them": 69,
+   "box": "https://fibalivestats.dcd.shared.geniussports.com/u/EYBL/2953944/",
+   "video": "https://eybl.tv/match/2953944/freedom-ua-basketball-academy/skup-bcm-olomouc",
+   "lines": {
+    "lishchyna": {
+     "n": 2,
+     "min": "6:49",
+     "pts": 3,
+     "reb": 1,
+     "ast": 0,
+     "stl": 0,
+     "blk": 0,
+     "tov": 1,
+     "eff": 2,
+     "start": false
+    },
+    "horb": {
+     "n": 3,
+     "min": "24:52",
+     "pts": 19,
+     "reb": 1,
+     "ast": 4,
+     "stl": 4,
+     "blk": 0,
+     "tov": 2,
+     "eff": 22,
+     "start": true
+    },
+    "mykhailovych": {
+     "n": 6,
+     "min": "25:40",
+     "pts": 9,
+     "reb": 5,
+     "ast": 2,
+     "stl": 0,
+     "blk": 1,
+     "tov": 2,
+     "eff": 5,
+     "start": true
+    },
+    "babych": {
+     "n": 15,
+     "min": "31:11",
+     "pts": 20,
+     "reb": 4,
+     "ast": 0,
+     "stl": 2,
+     "blk": 0,
+     "tov": 1,
+     "eff": 19,
+     "start": false
+    },
+    "vakulenko": {
+     "n": 19,
+     "min": "14:07",
+     "pts": 10,
+     "reb": 2,
+     "ast": 1,
+     "stl": 0,
+     "blk": 0,
+     "tov": 2,
+     "eff": 7,
+     "start": true
+    },
+    "rudomanenko": {
+     "n": 21,
+     "min": "22:15",
+     "pts": 12,
+     "reb": 11,
+     "ast": 3,
+     "stl": 0,
+     "blk": 1,
+     "tov": 1,
+     "eff": 22,
+     "start": false
+    },
+    "rublenko": {
+     "n": 22,
+     "min": "20:06",
+     "pts": 10,
+     "reb": 3,
+     "ast": 1,
+     "stl": 1,
+     "blk": 0,
+     "tov": 2,
+     "eff": 11,
+     "start": true
+    },
+    "bakhtieiev": {
+     "n": 30,
+     "min": "25:33",
+     "pts": 5,
+     "reb": 2,
+     "ast": 1,
+     "stl": 3,
+     "blk": 0,
+     "tov": 2,
+     "eff": 3,
+     "start": false
+    }
+   },
+   "top": [
+    "babych",
+    20
+   ],
+   "win": true
   }
  }
 }
