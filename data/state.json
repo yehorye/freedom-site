@@ -1239,17 +1239,19 @@
   },
   "6191630": {
    "date": "2026-11-21",
-   "venue": "",
+   "venue": "СК Динамо (Одеса)",
    "home": false,
    "opp": "Chaika-VMSU",
-   "oppFull": "Chaika-VMSU (Odesa)"
+   "oppFull": "Chaika-VMSU (Odesa)",
+   "time": "18:00"
   },
   "6191631": {
    "date": "2026-11-22",
-   "venue": "",
+   "venue": "СК Динамо (Одеса)",
    "home": false,
    "opp": "Chaika-VMSU",
-   "oppFull": "Chaika-VMSU (Odesa)"
+   "oppFull": "Chaika-VMSU (Odesa)",
+   "time": "10:30"
   }
  },
  "eybl": {
