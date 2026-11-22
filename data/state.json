@@ -1430,7 +1430,186 @@
    "home": false,
    "opp": "Chaika-VMSU",
    "oppFull": "Chaika-VMSU (Odesa)",
-   "time": "10:30"
+   "time": "10:30",
+   "us": 67,
+   "them": 79,
+   "lines": {
+    "horb": {
+     "n": 3,
+     "name": "Євген Горб",
+     "start": false,
+     "min": "-",
+     "oreb": 0,
+     "dreb": 0,
+     "reb": 0,
+     "ast": 0,
+     "pf": 0,
+     "tov": 0,
+     "stl": 0,
+     "blk": 0,
+     "eff": 0,
+     "pm": 0,
+     "pts": 0
+    },
+    "m-manuilyk": {
+     "n": 5,
+     "name": "Максим Мануйлик",
+     "start": true,
+     "min": "29:30",
+     "oreb": 2,
+     "dreb": 4,
+     "reb": 6,
+     "ast": 2,
+     "pf": 3,
+     "tov": 4,
+     "stl": 0,
+     "blk": 1,
+     "eff": 7,
+     "pm": -19,
+     "pts": 9
+    },
+    "mykhailovych": {
+     "n": 6,
+     "name": "Вадим Михайлович",
+     "start": false,
+     "min": "30:09",
+     "oreb": 0,
+     "dreb": 3,
+     "reb": 3,
+     "ast": 3,
+     "pf": 2,
+     "tov": 0,
+     "stl": 0,
+     "blk": 1,
+     "eff": 4,
+     "pm": -15,
+     "pts": 7
+    },
+    "hanytskyi": {
+     "n": 8,
+     "name": "Гліб Ганицький",
+     "start": true,
+     "min": "30:49",
+     "oreb": 1,
+     "dreb": 7,
+     "reb": 8,
+     "ast": 1,
+     "pf": 3,
+     "tov": 5,
+     "stl": 0,
+     "blk": 0,
+     "eff": 2,
+     "pm": -16,
+     "pts": 4
+    },
+    "babych": {
+     "n": 15,
+     "name": "Богдан Бабич",
+     "start": false,
+     "min": "-",
+     "oreb": 0,
+     "dreb": 0,
+     "reb": 0,
+     "ast": 0,
+     "pf": 0,
+     "tov": 0,
+     "stl": 0,
+     "blk": 0,
+     "eff": 0,
+     "pm": 0,
+     "pts": 0
+    },
+    "vakulenko": {
+     "n": 19,
+     "name": "Артем Вакуленко",
+     "start": true,
+     "min": "31:46",
+     "oreb": 1,
+     "dreb": 5,
+     "reb": 6,
+     "ast": 0,
+     "pf": 4,
+     "tov": 1,
+     "stl": 0,
+     "blk": 0,
+     "eff": 1,
+     "pm": -4,
+     "pts": 4
+    },
+    "rudomanenko": {
+     "n": 21,
+     "name": "Артем Рудоманенко",
+     "start": true,
+     "min": "15:51",
+     "oreb": 1,
+     "dreb": 2,
+     "reb": 3,
+     "ast": 0,
+     "pf": 5,
+     "tov": 1,
+     "stl": 0,
+     "blk": 0,
+     "eff": 7,
+     "pm": -7,
+     "pts": 6
+    },
+    "rublenko": {
+     "n": 22,
+     "name": "Ігор Рубленко",
+     "start": false,
+     "min": "14:00",
+     "oreb": 0,
+     "dreb": 4,
+     "reb": 4,
+     "ast": 0,
+     "pf": 4,
+     "tov": 1,
+     "stl": 0,
+     "blk": 1,
+     "eff": 10,
+     "pm": 11,
+     "pts": 6
+    },
+    "bakhtieiev": {
+     "n": 30,
+     "name": "Владислав Бахтєєв",
+     "start": false,
+     "min": "18:29",
+     "oreb": 0,
+     "dreb": 0,
+     "reb": 0,
+     "ast": 0,
+     "pf": 0,
+     "tov": 1,
+     "stl": 0,
+     "blk": 0,
+     "eff": 2,
+     "pm": -11,
+     "pts": 3
+    },
+    "r-manuilyk": {
+     "n": 35,
+     "name": "Роман Мануйлик",
+     "start": true,
+     "min": "29:26",
+     "oreb": 1,
+     "dreb": 5,
+     "reb": 6,
+     "ast": 6,
+     "pf": 4,
+     "tov": 4,
+     "stl": 2,
+     "blk": 0,
+     "eff": 30,
+     "pm": 1,
+     "pts": 28
+    }
+   },
+   "top": [
+    "r-manuilyk",
+    28
+   ],
+   "win": false
   }
  },
  "eybl": {
@@ -2578,21 +2757,21 @@
  "standings": [
   [
    "Polissya",
-   9,
-   9,
+   10,
+   10,
    0
+  ],
+  [
+   "Chaika-VMSU",
+   10,
+   6,
+   4
   ],
   [
    "DiDiBao",
    7,
    4,
    3
-  ],
-  [
-   "Chaika-VMSU",
-   9,
-   5,
-   4
   ],
   [
    "Niko-Basket-2",
@@ -2602,15 +2781,15 @@
   ],
   [
    "Freedom UA",
-   5,
+   6,
    1,
-   4
+   5
   ],
   [
    "CHEBASKET",
-   9,
+   10,
    1,
-   8
+   9
   ]
  ],
  "eybl20": {
