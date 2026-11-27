@@ -1610,6 +1610,36 @@
     28
    ],
    "win": false
+  },
+  "6209158": {
+   "date": "2026-12-05",
+   "home": false,
+   "opp": "CHEBASKET",
+   "oppFull": "CHEBASKET (Chernivtsi)",
+   "time": "17:00",
+   "venue": "ЧОДЮСШ (м.Чернівці)"
+  },
+  "6209159": {
+   "date": "2026-12-06",
+   "home": false,
+   "opp": "CHEBASKET",
+   "oppFull": "CHEBASKET (Chernivtsi)",
+   "time": "10:00",
+   "venue": "ЧОДЮСШ (м.Чернівці)"
+  },
+  "6209171": {
+   "date": "2026-12-19",
+   "home": true,
+   "opp": "Polissya",
+   "oppFull": "Polissya-Zhytomyr Polytechnic",
+   "venue": "СК НУФВСУ (Київ)"
+  },
+  "6209172": {
+   "date": "2026-12-20",
+   "home": true,
+   "opp": "Polissya",
+   "oppFull": "Polissya-Zhytomyr Polytechnic",
+   "venue": "СК НУФВСУ (Київ)"
   }
  },
  "eybl": {
